@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="images/favicon.ico" type="image/ico"/>
 
-    <title>Gentelella Alela! | </title>
+    <title>Gentelella Alela! @yield('title')</title>
 
     <!-- Bootstrap -->
     <link href="{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -18,6 +18,9 @@
     <link href="{{ asset('assets/vendors/iCheck/skins/flat/green.css')}}" rel="stylesheet">
 
     <link href="{{ asset('assets/vendorsMix/css/vendorsMix.css') }}" rel="stylesheet">
+
+    @stack('styles')
+
     <!-- Custom Theme Style -->
     <link href="{{ asset('assets/build/css/custom.min.css') }}" rel="stylesheet">
 </head>

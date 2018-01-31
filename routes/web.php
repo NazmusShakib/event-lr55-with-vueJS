@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('master');
+    return view('home-dashboard');
+});
+
+Route::get('/ca', function () {
+    return view('calendar');
 });

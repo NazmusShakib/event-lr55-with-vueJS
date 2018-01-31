@@ -55,7 +55,14 @@
 
             <!-- page content -->
             <div class="right_col" role="main">
-               @include('home-dashboard')
+
+
+
+               @yield('main-content')
+
+
+
+
             </div>
             <!-- /page content -->
 
@@ -71,5 +78,6 @@
     </div>
 
     @include('layouts.footer-scripts')
+    @stack('js')
 </body>
 </html>
