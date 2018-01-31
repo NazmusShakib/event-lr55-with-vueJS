@@ -7,4 +7,4 @@
 <script src="{{ asset('assets/vendorsMix/js/vendorsMix.js') }}"></script>
 
 <!-- Custom Theme Scripts -->
-<script src="{{ asset('assets/build/js/custom.min.js') }}"></script>
+<script src="{{ asset('assets/build/js/custom.js') }}"></script>

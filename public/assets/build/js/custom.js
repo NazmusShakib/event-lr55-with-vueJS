@@ -2376,14 +2376,14 @@ if (typeof NProgress != 'undefined') {
 			});
 		
 		};
-	   
+
 	   	/* CALENDAR */
-		  
+
 		    function  init_calendar() {
-					
+
 				if( typeof ($.fn.fullCalendar) === 'undefined'){ return; }
 				console.log('init_calendar');
-					
+
 				var date = new Date(),
 					d = date.getDate(),
 					m = date.getMonth(),
@@ -2477,9 +2477,9 @@ if (typeof NProgress != 'undefined') {
 					url: 'http://google.com/'
 				  }]
 				});
-				
+
 			};
-	   
+
 		/* DATA TABLES */
 			
 			function init_DataTables() {
@@ -4998,7 +4998,7 @@ if (typeof NProgress != 'undefined') {
 					  }]
 					}]
 				  });
-	   
+
 			}
 	   
 		}  
@@ -5035,7 +5035,7 @@ if (typeof NProgress != 'undefined') {
 		init_gauge();
 		init_PNotify();
 		init_starrr();
-		init_calendar();
+		// init_calendar();
 		init_compose();
 		init_CustomNotification();
 		init_autosize();
