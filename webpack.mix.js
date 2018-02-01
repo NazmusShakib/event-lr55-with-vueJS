@@ -1,5 +1,15 @@
 let mix = require('laravel-mix');
 
+/*mix.browserSync('http://localhost:8000/');*/
+
+var LiveReloadPlugin = require('webpack-livereload-plugin');
+
+mix.webpackConfig({
+    plugins: [
+        new LiveReloadPlugin()
+    ]
+});
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
