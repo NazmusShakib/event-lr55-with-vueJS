@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Event;
 use MaddHatter\LaravelFullcalendar\Facades\Calendar;
+use Ramsey\Uuid\Uuid;
 
 class EventsController extends Controller
 {
@@ -14,13 +15,13 @@ class EventsController extends Controller
     {
         $events = [];
         $data = Event::all();
-        if($data->count()) {
+        if ($data->count()) {
             foreach ($data as $key => $value) {
                 $events[] = Calendar::event(
                     $value->title,
                     true,
                     new \DateTime($value->start_date),
-                    new \DateTime($value->end_date.' +1 day'),
+                    new \DateTime($value->end_date . ' +1 day'),
                     null,
                     // Add color and link on event
                     [
@@ -38,30 +39,31 @@ class EventsController extends Controller
 
     public function getEvents()
     {
-        /*$events = [
-                [
-                'title' => 'All Day Event',
-                'start' =>  date('Y-m-d H:i:s')
-                ], [
-                    'title' => 'Long Event',
-                    'start' => date('Y-m-d H:i:s'),
-                    'end' => date("Y-m-d H:i:s", strtotime("+1 day"))
-                ], [
-                    'title' => 'Click for Google',
-                    'start' => date('Y-m-d H:i:s'),
-                    'end' => date('Y-m-d H:i:s'),
-                    'url' => 'http://google.com/'
-                ]
-        ];*/
-
         $events = Event::all();
-
         return $events;
     }
 
     public function addEvent(Request $request)
     {
-        return $request->all();
+        $request->id ? $eventID = $request->id : $eventID = Uuid::uuid4()->toString();
+
+        $event = Event::updateOrCreate(
+            [
+                'id' => $eventID
+            ],
+            [
+                'description' => $request->description,
+                'title' => $request->title,
+                'start' => date('Y-m-d H:i:s', $request->start / 1000),
+                'end' => date('Y-m-d H:i:s', $request->end / 1000),
+            ]
+        );
+
+        if ($event) {
+            return $event;
+        } else {
+            return 'false';
+        }
     }
 
 }

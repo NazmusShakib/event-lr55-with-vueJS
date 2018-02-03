@@ -125,8 +125,8 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Description</label>
                                 <div class="col-sm-9">
-                                    <textarea class="form-control" style="height:55px;" id="descr2"
-                                              name="descr"></textarea>
+                                    <textarea class="form-control" style="height:55px;" id="description2"
+                                              name="description"></textarea>
                                 </div>
                             </div>
 
@@ -156,18 +156,18 @@
 
         init_calendar();
         /* CALENDAR */
-        function init_calendar() {
 
-            if (typeof ($.fn.fullCalendar) === 'undefined') {
-                return;
-            }
-            console.log('init_calendar');
+        function  init_calendar() {
+
+            if( typeof ($.fn.fullCalendar) === 'undefined'){ return; }
+            //console.log('init_calendar');
 
             var date = new Date(),
                 d = date.getDate(),
                 m = date.getMonth(),
                 y = date.getFullYear(),
                 started,
+                ended,
                 categoryClass;
 
             var calendar = $('#calendar').fullCalendar({
@@ -178,69 +178,87 @@
                 },
                 selectable: true,
                 selectHelper: true,
-                select: function (start, end, allDay) {
+                select: function(start, end, allDay) {
                     $('#fc_create').click();
 
-                    started = start;
-                    ended = end;
+                    var started = start;
+                    var ended = end;
 
-                    $(".antosubmit").on("click", function () {
+                    console.log(started);
+                    console.log(ended);
+
+                    $(".antosubmit").one("click", function() {
                         var title = $("#title").val();
-                        if (end) {
-                            ended = end;
-                        }
+                        var description = $("#description").val();
 
+                        console.log(started);
+                        console.log(ended);
                         categoryClass = $("#event_type").val();
-                        description = $("#description").val();
 
                         if (title) {
-                            calendar.fullCalendar('renderEvent', {
-                                    title: title,
-                                    start: started,
-                                    end: end,
-                                    allDay: allDay
-                                },
-                                true // make the event "stick"
-                            );
-
-
                             $.ajax({
                                 url: '{!! route('add-event') !!}',
-                                data: 'title='+ title +'&description='+ description +'&start='+ start +'&end='+ end,
+                                data: 'title='+ title +'&description='+ description +'&start='+ started +'&end='+ ended,
                                 type: "POST",
-                                success: function(json) {
-                                    alert('Added Successfully');
+                                success: function(response) {
+                                    calendar.fullCalendar('renderEvent', {
+                                            id : response.id,
+                                            title: title,
+                                            description: description,
+                                            start: started,
+                                            end: end,
+                                            allDay: allDay
+                                        },
+                                        true // make the event "stick"
+                                    );
                                 }
                             });
-
                         }
-                        console.log('start='+start+' end='+end+' allDay='+allDay);
+
                         $('#title').val('');
+                        $('#description').val('');
+
                         calendar.fullCalendar('unselect');
+
                         $('.antoclose').click();
+
                         return false;
                     });
                 },
-                eventClick: function (calEvent, jsEvent, view) {
+                eventClick: function(calEvent, jsEvent, view) {
                     $('#fc_edit').click();
                     $('#title2').val(calEvent.title);
+                    $('#description2').val(calEvent.description);
+
+                    console.log(calEvent);
 
                     categoryClass = $("#event_type").val();
 
-                    $(".antosubmit2").on("click", function () {
+                    $(".antosubmit2").one("click", function() {
                         calEvent.title = $("#title2").val();
+                        calEvent.description = $("#description2").val();
+                        console.log(calEvent.id);
+                        $.ajax({
+                            url: '{!! route('add-event') !!}',
+                            data: 'id='+ calEvent.id +'&title='+ calEvent.title +'&description='+ calEvent.description +'&start='+ calEvent.start +'&end='+ calEvent.end,
+                            type: "POST",
+                            success: function(response) {
+                                calendar.fullCalendar('updateEvent', calEvent);
+                                calEvent = "";
+                            }
+                        });
 
-                        calendar.fullCalendar('updateEvent', calEvent);
                         $('.antoclose2').click();
+                        $(this).off('click');
                     });
 
                     calendar.fullCalendar('unselect');
                 },
-                editable: true,
-                "eventLimit":true,
+                editable: false,
                 events: '{!! route('get-events') !!}'
             });
-        };
+
+        }
     });
 </script>
 @endpush
