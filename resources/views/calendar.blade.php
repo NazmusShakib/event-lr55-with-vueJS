@@ -234,7 +234,7 @@
 
                     categoryClass = $("#event_type").val();
 
-                    $(".antosubmit2").one("click", function() {
+                    $(".antosubmit2").off('click').one("click", function() {
                         calEvent.title = $("#title2").val();
                         calEvent.description = $("#description2").val();
                         console.log(calEvent.id);

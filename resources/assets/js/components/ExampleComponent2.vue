@@ -8,11 +8,7 @@
                     <div class="panel-body">
                         {{ a1 }}
                     </div>
-                    <input type="text" v-model="userName">
-                    {{ userName }}
-
-                    <button @click="submit()">Hello</button>
-                    <router-link :to="'/vue-test2'">hi</router-link>
+                    <button @click="submit()"></button>
                 </div>
             </div>
         </div>
@@ -23,7 +19,7 @@
     export default {
         data: function () {
             return {
-                a1: 'This from a 1',
+                a1: 'This from 2',
                 userName: '',
                 table: {}
             }

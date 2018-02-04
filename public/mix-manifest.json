@@ -1,4 +1,7 @@
 {
+    "/js/vue-app.js": "/js/vue-app.js",
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
     "/assets/vendorsMix/css/vendorsMix.css": "/assets/vendorsMix/css/vendorsMix.css",
     "/assets/vendorsMix/js/vendorsMix.js": "/assets/vendorsMix/js/vendorsMix.js"
 }

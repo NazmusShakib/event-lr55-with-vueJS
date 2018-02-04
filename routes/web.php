@@ -15,9 +15,7 @@ Route::get('/', function () {
     return view('home-dashboard');
 });
 
-Route::get('/ca', function () {
-    return view('calendar');
-});
+Route::get('/events', 'EventsController@index');
 
 Route::get('get-events', [
     'uses' => 'EventsController@getEvents',
@@ -28,4 +26,10 @@ Route::post('add-event', [
     'as' => 'add-event'
 ]);
 
-Route::get('ev', 'EventsController@index');
+Route::get('vue-test/', function () {
+    return view('vue-test');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

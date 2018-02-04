@@ -21,8 +21,10 @@ mix.webpackConfig({
  |
  */
 
-/*mix.js('resources/assets/js/app.js', 'public/js')
- .sass('resources/assets/sass/app.scss', 'public/css');*/
+mix.js('resources/assets/js/app.js', 'public/js')
+    .js('resources/assets/js/vue-app.js', 'public/js/vue-app.js')
+    .sass('resources/assets/sass/app.scss', 'public/css');
+
 
 mix.styles([
     'public/assets/vendors/nprogress/nprogress.css',
