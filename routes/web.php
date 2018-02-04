@@ -18,3 +18,14 @@ Route::get('/', function () {
 Route::get('/ca', function () {
     return view('calendar');
 });
+
+Route::get('get-events', [
+    'uses' => 'EventsController@getEvents',
+    'as' => 'get-events'
+]);
+Route::post('add-event', [
+    'uses' => 'EventsController@addEvent',
+    'as' => 'add-event'
+]);
+
+Route::get('ev', 'EventsController@index');
