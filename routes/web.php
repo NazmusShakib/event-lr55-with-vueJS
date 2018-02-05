@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('home-dashboard');
 });
 
@@ -24,12 +24,18 @@ Route::get('get-events', [
 Route::post('add-event', [
     'uses' => 'EventsController@addEvent',
     'as' => 'add-event'
-]);
+]);*/
 
 Route::get('vue-test/', function () {
     return view('vue-test');
 });
 
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::resource('/task', 'TaskController');
