@@ -11,11 +11,15 @@
 |
 */
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('home-dashboard');
 });
 
-Route::get('/events', 'EventsController@index');
+Route::get('/events', [
+    'uses' => 'EventsController@index',
+    'as' => 'events'
+
+]);
 
 Route::get('get-events', [
     'uses' => 'EventsController@getEvents',
@@ -24,7 +28,7 @@ Route::get('get-events', [
 Route::post('add-event', [
     'uses' => 'EventsController@addEvent',
     'as' => 'add-event'
-]);*/
+]);
 
 Route::get('vue-test/', function () {
     return view('vue-test');
@@ -34,8 +38,8 @@ Route::get('vue-test/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', function () {
+/*Route::get('/welcome', function () {
     return view('welcome');
-});
+});*/
 
 Route::resource('/task', 'TaskController');
