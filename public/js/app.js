@@ -13164,6 +13164,9 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: function data() {
@@ -13278,7 +13281,7 @@ module.exports = __webpack_require__(47);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_task_Task_vue__ = __webpack_require__(45);
-throw new Error("Cannot find module \"./components/companies/CompaniesCreate.vue\"");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_task_TaskCreate_vue__ = __webpack_require__(71);
 __webpack_require__(40);
 
 window.Vue = __webpack_require__(11);
@@ -13294,6 +13297,10 @@ var routes = [{
     components: {
         taskIndex: __WEBPACK_IMPORTED_MODULE_1__components_task_Task_vue__["a" /* default */]
     }
+}, {
+    path: '/task/create',
+    component: __WEBPACK_IMPORTED_MODULE_2__components_task_TaskCreate_vue__["a" /* default */],
+    name: 'TaskCreate'
 }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({ routes: routes });
@@ -43302,98 +43309,110 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "panel panel-default" }, [
-          _c("div", { staticClass: "panel-heading" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary btn-xs pull-right",
-                on: {
-                  click: function($event) {
-                    _vm.initAddTask()
+        _c(
+          "div",
+          { staticClass: "panel panel-default" },
+          [
+            _c("div", { staticClass: "panel-heading" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary btn-xs pull-right",
+                  on: {
+                    click: function($event) {
+                      _vm.initAddTask()
+                    }
                   }
-                }
-              },
-              [
-                _vm._v(
-                  "\n                        + Add New Task\n                    "
-                )
-              ]
-            ),
-            _vm._v("\n                    My Tasks\n                ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel-body" }, [
-            _vm.tasks.length > 0
-              ? _c(
-                  "table",
-                  {
-                    staticClass:
-                      "table table-bordered table-striped table-responsive"
-                  },
-                  [
-                    _c(
-                      "tbody",
-                      [
-                        _vm._m(0),
-                        _vm._v(" "),
-                        _vm._l(_vm.tasks, function(task, index) {
-                          return _c("tr", [
-                            _c("td", [_vm._v(_vm._s(index + 1))]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(
-                                "\n                                " +
-                                  _vm._s(task.name) +
-                                  "\n                            "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(
-                                "\n                                " +
-                                  _vm._s(task.description) +
-                                  "\n                            "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-success btn-xs",
-                                  on: {
-                                    click: function($event) {
-                                      _vm.initUpdate(index)
-                                    }
-                                  }
-                                },
-                                [_vm._v("Edit")]
-                              ),
+                },
+                [
+                  _vm._v(
+                    "\n                        + Add New Task\n                    "
+                  )
+                ]
+              ),
+              _vm._v("\n                    My Tasks\n                ")
+            ]),
+            _vm._v(" "),
+            _c("router-link", { attrs: { to: "/task/create" } }, [
+              _c("h4", { staticClass: "text-success" }, [
+                _c("span", { staticClass: "label label-success pull-right" }),
+                _vm._v(" Straight Stairs ")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "panel-body" }, [
+              _vm.tasks.length > 0
+                ? _c(
+                    "table",
+                    {
+                      staticClass:
+                        "table table-bordered table-striped table-responsive"
+                    },
+                    [
+                      _c(
+                        "tbody",
+                        [
+                          _vm._m(0),
+                          _vm._v(" "),
+                          _vm._l(_vm.tasks, function(task, index) {
+                            return _c("tr", [
+                              _c("td", [_vm._v(_vm._s(index + 1))]),
                               _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-danger btn-xs",
-                                  on: {
-                                    click: function($event) {
-                                      _vm.deleteTask(index)
+                              _c("td", [
+                                _vm._v(
+                                  "\n                                " +
+                                    _vm._s(task.name) +
+                                    "\n                            "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  "\n                                " +
+                                    _vm._s(task.description) +
+                                    "\n                            "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-success btn-xs",
+                                    on: {
+                                      click: function($event) {
+                                        _vm.initUpdate(index)
+                                      }
                                     }
-                                  }
-                                },
-                                [_vm._v("Delete")]
-                              )
+                                  },
+                                  [_vm._v("Edit")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-danger btn-xs",
+                                    on: {
+                                      click: function($event) {
+                                        _vm.deleteTask(index)
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Delete")]
+                                )
+                              ])
                             ])
-                          ])
-                        })
-                      ],
-                      2
-                    )
-                  ]
-                )
-              : _vm._e()
-          ])
-        ])
+                          })
+                        ],
+                        2
+                      )
+                    ]
+                  )
+                : _vm._e()
+            ])
+          ],
+          1
+        )
       ])
     ]),
     _vm._v(" "),
@@ -46360,6 +46379,258 @@ if (inBrowser && window.Vue) {
 
 /* harmony default export */ __webpack_exports__["a"] = (VueRouter);
 
+
+/***/ }),
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    data: function data() {
+        return {
+            user: {
+                email: '',
+                name: '',
+                password: ''
+            }
+        };
+    },
+
+
+    methods: {
+        handleSubmit: function handleSubmit() {
+            // Send data to the server or update your stores and such.
+        }
+    }
+});
+
+/***/ }),
+/* 71 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_TaskCreate_vue__ = __webpack_require__(70);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_78ebe89e_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_TaskCreate_vue__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(3);
+var disposed = false
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+
+var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_TaskCreate_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_78ebe89e_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_TaskCreate_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_78ebe89e_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_TaskCreate_vue__["b" /* staticRenderFns */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\task\\TaskCreate.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-78ebe89e", Component.options)
+  } else {
+    hotAPI.reload("data-v-78ebe89e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 72 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "panel panel-default" }, [
+          _c("div", { staticClass: "panel-heading" }, [_vm._v("Dashboard")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel-body" }, [
+            _vm._v("\n                    You are logged in!\n                ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  _vm.handleSubmit($event)
+                }
+              }
+            },
+            [
+              _c("label", [
+                _vm._v(
+                  "\n                        Email:\n                        "
+                ),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.email,
+                      expression: "user.email"
+                    }
+                  ],
+                  attrs: { type: "email" },
+                  domProps: { value: _vm.user.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.user, "email", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("label", [
+                _vm._v(
+                  "\n                        Name:\n                        "
+                ),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.name,
+                      expression: "user.name"
+                    }
+                  ],
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.user.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.user, "name", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("label", [
+                _vm._v(
+                  "\n                        Password:\n                        "
+                ),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.password,
+                      expression: "user.password"
+                    }
+                  ],
+                  attrs: { type: "password" },
+                  domProps: { value: _vm.user.password },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.user, "password", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("button", { attrs: { type: "submit" } }, [_vm._v("Submit")])
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-78ebe89e", { render: render, staticRenderFns: staticRenderFns })
+  }
+}
 
 /***/ })
 /******/ ]);

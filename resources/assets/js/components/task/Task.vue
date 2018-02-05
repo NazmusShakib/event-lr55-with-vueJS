@@ -9,6 +9,9 @@
                         </button>
                         My Tasks
                     </div>
+                    <router-link to="/task/create">
+                        <h4 class="text-success"><span class="label label-success pull-right"></span> Straight Stairs </h4>
+                    </router-link>
 
                     <div class="panel-body">
                         <table class="table table-bordered table-striped table-responsive" v-if="tasks.length > 0">
