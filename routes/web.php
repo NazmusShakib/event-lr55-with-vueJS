@@ -43,3 +43,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 });*/
 
 Route::resource('/task', 'TaskController');
+Route::get('member/registration', 'MemberController@membershipForm')->name('membershipForm');
+Route::post('storeee', 'MemberController@storeee')->name('storeee');
+Route::resource('/member', 'MemberController');

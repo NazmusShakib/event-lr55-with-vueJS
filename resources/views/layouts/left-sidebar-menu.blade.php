@@ -9,7 +9,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="{{route('member.index')}}">
                     <i class="fa fa-group"></i> Members
                 </a>
             </li>
