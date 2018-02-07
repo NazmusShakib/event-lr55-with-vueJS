@@ -10,10 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('home-dashboard');
-});
+Route::get('/',[
+    'uses' => 'HomeController@homeDashboard',
+    'as' => 'homeDashboard'
+]);
 
 Route::get('/events', [
     'uses' => 'EventsController@index',
@@ -44,5 +44,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/task', 'TaskController');
 Route::get('member/registration', 'MemberController@membershipForm')->name('membershipForm');
+Route::get('member/add', 'MemberController@membershipFormForAdmin')->name('membershipFormForAdmin');
 Route::post('storeee', 'MemberController@storeee')->name('storeee');
 Route::resource('/member', 'MemberController');

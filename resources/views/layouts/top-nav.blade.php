@@ -9,7 +9,7 @@
                 <li class="">
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
                        aria-expanded="false">
-                        <img src="{{ asset('assets/production/images/img.jpg') }}" alt="">John Doe
+                        <img src="{{ asset('assets/production/images/img.jpg') }}" alt="">{{Auth::user()->name}}
                         <span class=" fa fa-angle-down"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -21,7 +21,18 @@
                             </a>
                         </li>
                         <li><a href="javascript:;">Help</a></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                        <li>
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                <i class="fa fa-sign-out pull-right"></i> Log Out
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+
+                        </li>
                     </ul>
                 </li>
 
@@ -36,7 +47,7 @@
                             <a>
                                 <span class="image"><img src="{{ asset('assets/production/images/img.jpg') }}" alt="Profile Image"/></span>
                                 <span>
-                              <span>John Smith</span>
+                              <span>{{Auth::user()->name}}</span>
                               <span class="time">3 mins ago</span>
                             </span>
                                 <span class="message">

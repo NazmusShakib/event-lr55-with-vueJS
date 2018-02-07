@@ -6,7 +6,9 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+                        <a href="{{url('/')}}" class="site_title">
+                            <img src="{{asset('logo/logo.png')}}" alt="logo" height="50px" width="50px">
+                            <span>Alarmministries</span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -19,7 +21,7 @@
                         </div>
                         <div class="profile_info">
                             <span>Welcome,</span>
-                            <h2>John Doe</h2>
+                            <h2>{{Auth::user()->name}}</h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
