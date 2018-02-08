@@ -19,6 +19,12 @@
                     <i class="fa fa-calendar"></i> Events
                 </a>
             </li>
+
+            <li>
+                <a href="#">
+                    <i class="fa fa-wechat"></i> Chat Room
+                </a>
+            </li>
         </ul>
     </div>
 
