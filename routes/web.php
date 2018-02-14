@@ -18,7 +18,6 @@ Route::get('/', [
 Route::get('/events', [
     'uses' => 'EventsController@index',
     'as' => 'events'
-
 ]);
 
 Route::get('get-events', [
@@ -46,6 +45,7 @@ Route::resource('/task', 'TaskController');
 Route::get('member/registration', 'MemberController@membershipForm')->name('membershipForm');
 Route::get('member/add', 'MemberController@membershipFormForAdmin')->name('membershipFormForAdmin');
 Route::post('storeee', 'MemberController@storeee')->name('storeee');
+Route::get('member/member-delete/{id}', 'MemberController@memberDelete')->name('member-delete');
 Route::resource('/member', 'MemberController');
 
 

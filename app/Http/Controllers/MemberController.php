@@ -22,8 +22,11 @@ class MemberController extends Controller
      */
     public function index()
     {
-        return view('members.member-list');
-
+        $members = Member::select(
+            'id', 'sp_user_id', 'hh_user_id', 'sp_title', 'hh_title', 'sp_fname', 'hh_fname', 'sp_lname', 'hh_lname', 'sp_cell_phone',
+            'hh_cell_phone', 'sp_email', 'hh_email'
+        )->paginate(10);
+        return view('members.member-list', compact('members'));
     }
 
     /**
@@ -76,16 +79,18 @@ class MemberController extends Controller
         }
 
         $spUser = User::create([
-            'name' => "$request->sp_title $request->sp_fname $request->sp_mname $request->sp_lname",
+            'name' => "$request->sp_fname $request->sp_lname",
             'email' => $request->sp_email,
             'phone' => $request->sp_cell_phone,
+            'role_id' => 3,
             'password' => 'secret',
         ]);
 
         $hhUser = User::create([
-            'name' => "$request->hh_title $request->hh_fname $request->hh_mname $request->hh_lname",
+            'name' => "$request->hh_fname $request->hh_lname",
             'email' => $request->hh_email,
             'phone' => $request->hh_cell_phone,
+            'role_id' => 3,
             'password' => 'secret',
         ]);
 
@@ -177,7 +182,6 @@ class MemberController extends Controller
             'Young Adults' => $request->hh_activities_young_adults,
             'Fitness' => $request->hh_activities_fitness,
             'Youth Groups' => $request->hh_activities_youth_groups
-
         ];
         $sp_activities = [
             'Boys Club' => $request->sp_activities_boys_club,
@@ -293,10 +297,6 @@ class MemberController extends Controller
             'comments' => $request->comments,
         ];
 
-        Member::create($postData);
-
-        //return $request->all();
-
         if (Member::create($postData)) {
             return redirect()->back()->with('msg_success', 'Your information has been submitted successfully.');
         } else {
@@ -345,8 +345,14 @@ class MemberController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function memberDelete($id)
     {
-        //
+        $member = Member::find($id);
+
+        if ($member->delete()) {
+            return redirect()->back()->with('msg_success', 'Member has been deleted successfully.');
+        } else {
+            return redirect()->back()->with('msg_error', 'Failed to delete.');
+        }
     }
 }

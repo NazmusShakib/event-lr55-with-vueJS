@@ -40,11 +40,6 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <p class="text-muted font-13 m-b-30">
-                            The Buttons extension for DataTables provides a common set of options, API methods and
-                            styling to display buttons on a page that will interact with a DataTable. The core library
-                            provides the based framework upon which plug-ins can built.
-                        </p>
                         <div id="datatable-buttons_wrapper"
                              class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                             <div class="dt-buttons btn-group">
@@ -53,11 +48,13 @@
                                 <a class="btn btn-default buttons-print btn-sm" tabindex="0"
                                         aria-controls="datatable-buttons" href="#"><span>Print</span></a>
                             </div>
-                            <div id="datatable-buttons_filter" class="dataTables_filter"><label>Search:<input
+                            <div id="datatable-buttons_filter" class="dataTables_filter">
+                                <label>Search:<input
                                             type="search" class="form-control input-sm" placeholder=""
-                                            aria-controls="datatable-buttons"></label></div>
-                            <table id="datatable-buttons"
-                                   class="table table-striped table-bordered dataTable no-footer dtr-inline" role="grid"
+                                            aria-controls="datatable-buttons">
+                                </label>
+                            </div>
+                                <table class="table table-striped table-bordered" role="grid"
                                    aria-describedby="datatable-buttons_info" style="width: 1031px;">
                                 <thead>
                                 <tr role="row">
@@ -93,131 +90,32 @@
                                 </thead>
 
                                 <tbody>
-                                <tr role="row" class="odd">
-                                    <td tabindex="0" class="sorting_1">Airi Satou</td>
-                                    <td style="">Accountant</td>
-                                    <td style="">+799-49-1958460</td>
-                                    <td style="">+799-49-1958460</td>
-                                    <td style="">head@example.com</td>
-                                    <td style="">spouse@example.com</td>
-                                    <td style=""><i class="fa fa-eye" title="View"></i> | <i class="fa fa-edit" title="Edit"></i> |  <i class="fa fa-trash" title="Delete"></i> </td>
-                                </tr>
-                                <tr role="row" class="even">
-                                    <td class="sorting_1" tabindex="0">Angelica Ramos</td>
-                                    <td style="">Chief Executive Officer (CEO)</td>
-                                    <td style="">+799-49-1958460</td>
-                                    <td style="">+799-49-1958460</td>
-                                    <td style="">head@example.com</td>
-                                    <td style="">spouse@example.com</td>
-                                    <td style=""><i class="fa fa-eye" title="View"></i> | <i class="fa fa-edit" title="Edit"></i> |  <i class="fa fa-trash" title="Delete"></i> </td>
-                                </tr>
-                                <tr role="row" class="odd">
-                                    <td tabindex="0" class="sorting_1">Ashton Cox</td>
-                                    <td style="">Junior Technical Author</td>
-                                    <td style="">+799-49-1958460</td>
-                                    <td style="">+799-49-1958460</td>
-                                    <td style="">head@example.com</td>
-                                    <td style="">spouse@example.com</td>
-                                    <td style=""><i class="fa fa-eye" title="View"></i> | <i class="fa fa-edit" title="Edit"></i> |  <i class="fa fa-trash" title="Delete"></i> </td>
-                                </tr>
-                                <tr role="row" class="even">
-                                    <td class="sorting_1" tabindex="0">Bradley Greer</td>
-                                    <td style="">Software Engineer</td>
-                                    <td style="">+799-49-1958460</td>
-                                    <td style="">+799-49-1958460</td>
-                                    <td style="">head@example.com</td>
-                                    <td style="">spouse@example.com</td>
-                                    <td style=""><i class="fa fa-eye" title="View"></i> | <i class="fa fa-edit" title="Edit"></i> |  <i class="fa fa-trash" title="Delete"></i> </td>
-                                </tr>
-                                <tr role="row" class="odd">
-                                    <td class="sorting_1" tabindex="0">Brenden Wagner</td>
-                                    <td style="">Software Engineer</td>
-                                    <td style="">+799-49-1958460</td>
-                                    <td style="">+799-49-1958460</td>
-                                    <td style="">head@example.com</td>
-                                    <td style="">spouse@example.com</td>
-                                    <td style=""><i class="fa fa-eye" title="View"></i> | <i class="fa fa-edit" title="Edit"></i> |  <i class="fa fa-trash" title="Delete"></i> </td>
-                                </tr>
 
-                                <tr role="row" class="even">
-                                    <td tabindex="0" class="sorting_1">Brielle Williamson</td>
-                                    <td style="">Integration Specialist</td>
-                                    <td style="">+799-49-1958460</td>
-                                    <td style="">+799-49-1958460</td>
-                                    <td style="">head@example.com</td>
-                                    <td style="">spouse@example.com</td>
-                                    <td style=""><i class="fa fa-eye" title="View"></i> | <i class="fa fa-edit" title="Edit"></i> |  <i class="fa fa-trash" title="Delete"></i> </td>
-                                </tr>
 
-                                <tr role="row" class="odd">
-                                    <td class="sorting_1" tabindex="0">Bruno Nash</td>
-                                    <td style="">Software Engineer</td>
-                                    <td style="">+799-49-1958460</td>
-                                    <td style="">+799-49-1958460</td>
-                                    <td style="">head@example.com</td>
-                                    <td style="">spouse@example.com</td>
-                                    <td style=""><i class="fa fa-eye" title="View"></i> | <i class="fa fa-edit" title="Edit"></i> |  <i class="fa fa-trash" title="Delete"></i> </td>
+                                @foreach($members as $key => $member)
+                                    <tr role="row" class="odd">
+                                        <td tabindex="0" class="sorting_1">{{$member->hh_title}} {{$member->hh_fname}} {{$member->hh_lname}}</td>
+                                        <td>{{$member->sp_title}} {{$member->sp_fname}} {{$member->sp_lname}}</td>
+                                        <td>{{$member->hh_cell_phone}}</td>
+                                        <td>{{$member->sp_cell_phone}}</td>
+                                        <td>{{$member->hh_email}}</td>
+                                        <td>{{$member->sp_email}}</td>
+                                        <td style="">
+                                            <i class="fa fa-eye" title="View"></i> |
+                                            <i class="fa fa-edit" title="Edit"></i> |
+                                            <a href="{{route('member-delete', ['id' => $member->id])}}"> <i class="fa fa-trash" title="Delete"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
 
-                                </tr>
-                                <tr role="row" class="even">
-                                    <td class="sorting_1" tabindex="0">Caesar Vance</td>
-                                    <td style="">Pre-Sales Support</td>
-                                    <td style="">+799-49-1958460</td>
-                                    <td style="">+799-49-1958460</td>
-                                    <td style="">head@example.com</td>
-                                    <td style="">spouse@example.com</td>
-                                    <td style=""><i class="fa fa-eye" title="View"></i> | <i class="fa fa-edit" title="Edit"></i> |  <i class="fa fa-trash" title="Delete"></i> </td>
-                                </tr>
 
-                                <tr role="row" class="odd">
-                                    <td class="sorting_1" tabindex="0">Cara Stevens</td>
-                                    <td style="">Sales Assistant</td>
-                                    <td style="">+799-49-1958460</td>
-                                    <td style="">+799-49-1958460</td>
-                                    <td style="">head@example.com</td>
-                                    <td style="">spouse@example.com</td>
-                                    <td style=""><i class="fa fa-eye" title="View"></i> | <i class="fa fa-edit" title="Edit"></i> |  <i class="fa fa-trash" title="Delete"></i> </td>
-                                </tr>
 
-                                <tr role="row" class="even">
-                                    <td tabindex="0" class="sorting_1">Cedric Kelly</td>
-                                    <td style="">Senior Javascript Developer</td>
-                                    <td style="">+799-49-1958460</td>
-                                    <td style="">+799-49-1958460</td>
-                                    <td style="">head@example.com</td>
-                                    <td style="">spouse@example.com</td>
-                                    <td style=""><i class="fa fa-eye" title="View"></i> | <i class="fa fa-edit" title="Edit"></i> |  <i class="fa fa-trash" title="Delete"></i> </td>
 
-                                </tr>
+
                                 </tbody>
                             </table>
-                            <div class="dataTables_info" id="datatable-buttons_info" role="status" aria-live="polite">
-                                Showing 1 to 10 of 57 entries
-                            </div>
-                            <div class="dataTables_paginate paging_simple_numbers" id="datatable-buttons_paginate">
-                                <ul class="pagination">
-                                    <li class="paginate_button previous disabled" id="datatable-buttons_previous"><a
-                                                href="#" aria-controls="datatable-buttons" data-dt-idx="0" tabindex="0">Previous</a>
-                                    </li>
-                                    <li class="paginate_button active"><a href="#" aria-controls="datatable-buttons"
-                                                                          data-dt-idx="1" tabindex="0">1</a></li>
-                                    <li class="paginate_button "><a href="#" aria-controls="datatable-buttons"
-                                                                    data-dt-idx="2" tabindex="0">2</a></li>
-                                    <li class="paginate_button "><a href="#" aria-controls="datatable-buttons"
-                                                                    data-dt-idx="3" tabindex="0">3</a></li>
-                                    <li class="paginate_button "><a href="#" aria-controls="datatable-buttons"
-                                                                    data-dt-idx="4" tabindex="0">4</a></li>
-                                    <li class="paginate_button "><a href="#" aria-controls="datatable-buttons"
-                                                                    data-dt-idx="5" tabindex="0">5</a></li>
-                                    <li class="paginate_button "><a href="#" aria-controls="datatable-buttons"
-                                                                    data-dt-idx="6" tabindex="0">6</a></li>
-                                    <li class="paginate_button next" id="datatable-buttons_next"><a href="#"
-                                                                                                    aria-controls="datatable-buttons"
-                                                                                                    data-dt-idx="7"
-                                                                                                    tabindex="0">Next</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            {{ $members->render() }}
+
                         </div>
                     </div>
                 </div>
