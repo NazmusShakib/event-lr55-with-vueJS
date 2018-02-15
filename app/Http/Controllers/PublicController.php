@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Member;
 use Illuminate\Http\Request;
-use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Support\Facades\Validator;
 
 class PublicController extends Controller
 {

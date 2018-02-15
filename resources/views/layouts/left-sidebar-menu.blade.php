@@ -20,11 +20,11 @@
                 </a>
             </li>
 
-            <li>
+            {{--<li>
                 <a href="#">
                     <i class="fa fa-wechat"></i> Chat Room
                 </a>
-            </li>
+            </li>--}}
         </ul>
     </div>
 
