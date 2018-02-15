@@ -110,8 +110,6 @@
 
 
 
-
-
                                 </tbody>
                             </table>
                             {{ $members->render() }}

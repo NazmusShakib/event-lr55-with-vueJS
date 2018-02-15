@@ -42,9 +42,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 });*/
 
 Route::resource('/task', 'TaskController');
-Route::get('member/registration', 'MemberController@membershipForm')->name('membershipForm');
+Route::get('member/registration', 'PublicController@membershipForm')->name('membershipForm');
+Route::post('member/register_member', 'PublicController@storeMember')->name('storeMember');
 Route::get('member/add', 'MemberController@membershipFormForAdmin')->name('membershipFormForAdmin');
-Route::post('storeee', 'MemberController@storeee')->name('storeee');
 Route::get('member/member-delete/{id}', 'MemberController@memberDelete')->name('member-delete');
 Route::resource('/member', 'MemberController');
 

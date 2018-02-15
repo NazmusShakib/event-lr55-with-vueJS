@@ -2,59 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Member;
 use App\User;
+use App\Member;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Contracts\Validation\Validator;
 
-class MemberController extends Controller
+class PublicController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $members = Member::select(
-            'id', 'sp_user_id', 'hh_user_id', 'sp_title', 'hh_title', 'sp_fname', 'hh_fname', 'sp_lname', 'hh_lname', 'sp_cell_phone',
-            'hh_cell_phone', 'sp_email', 'hh_email'
-        )->paginate(10);
-        return view('members.member-list', compact('members'));
-    }
-
-    /**
-     * Display a membership Form For Admin section.
+     * Display a membershipForm for public submission.
      *
      */
-    public function membershipFormForAdmin()
+    public function membershipForm()
     {
-        return view('members.member-form-for-admin');
+        return view('members.membership-form');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function storeMember(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'sp_email' => 'required|unique:members|max:155',
@@ -228,7 +193,6 @@ class MemberController extends Controller
             'Visitation' => $request->sp_ws_visitation
         ];
 
-
         $postData = [
             'sp_user_id' => $spUser->id,
             'hh_user_id' => $hhUser->id,
@@ -294,57 +258,5 @@ class MemberController extends Controller
             return redirect()->back()->with('msg_error', 'The following information already exists in the system.');
         }
 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $member = Member::find($id);
-        return view('members.member', compact('member'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function memberDelete($id)
-    {
-        $member = Member::find($id);
-
-        if ($member->delete()) {
-            return redirect()->back()->with('msg_success', 'Member has been deleted successfully.');
-        } else {
-            return redirect()->back()->with('msg_error', 'Failed to delete.');
-        }
     }
 }
