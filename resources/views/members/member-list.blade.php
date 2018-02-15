@@ -103,7 +103,7 @@
                                         <td>
                                             <a href="{{route('member.show', ['id' => $member->id])}}"><i class="fa fa-eye" title="View"></i></a>  |
                                             <i class="fa fa-edit" title="Edit"></i> |
-                                            <a href="{{route('member-delete', ['id' => $member->id])}}"> <i class="fa fa-trash" title="Delete"></i></a>
+                                            <a href="{{route('member-delete', ['id' => $member->id])}}" onclick="return confirm('Are you sure?')"> <i class="fa fa-trash" title="Delete"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
