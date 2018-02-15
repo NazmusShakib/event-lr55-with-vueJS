@@ -55,7 +55,7 @@
                                 </label>
                             </div>
                                 <table class="table table-striped table-bordered" role="grid"
-                                   aria-describedby="datatable-buttons_info" style="width: 1031px;">
+                                   aria-describedby="datatable-buttons_info">
                                 <thead>
                                 <tr role="row">
                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable-buttons" rowspan="1"
@@ -100,8 +100,8 @@
                                         <td>{{$member->sp_cell_phone}}</td>
                                         <td>{{$member->hh_email}}</td>
                                         <td>{{$member->sp_email}}</td>
-                                        <td style="">
-                                            <i class="fa fa-eye" title="View"></i> |
+                                        <td>
+                                            <a href="{{route('member.show', ['id' => $member->id])}}"><i class="fa fa-eye" title="View"></i></a>  |
                                             <i class="fa fa-edit" title="Edit"></i> |
                                             <a href="{{route('member-delete', ['id' => $member->id])}}"> <i class="fa fa-trash" title="Delete"></i></a>
                                         </td>

@@ -313,7 +313,8 @@ class MemberController extends Controller
      */
     public function show($id)
     {
-        //
+        $member = Member::find($id);
+        return view('members.member', compact('member'));
     }
 
     /**
