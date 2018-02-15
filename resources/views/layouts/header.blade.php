@@ -16,6 +16,7 @@
     <!-- Font Awesome -->
     <link href="{{ asset('assets/vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{ asset('assets/vendors/iCheck/skins/flat/green.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('assets/parsley/parsley.css')}}">
 
     <link href="{{ asset('assets/vendorsMix/css/vendorsMix.css') }}" rel="stylesheet">
 

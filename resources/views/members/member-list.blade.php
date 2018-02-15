@@ -5,8 +5,6 @@
 
 @endpush
 
-
-
 @section('main-content')
 
     <div class="">
@@ -48,12 +46,12 @@
                                 <a class="btn btn-default buttons-print btn-sm" tabindex="0"
                                         aria-controls="datatable-buttons" href="#"><span>Print</span></a>
                             </div>
-                            <div id="datatable-buttons_filter" class="dataTables_filter">
+                            {{--<div id="datatable-buttons_filter" class="dataTables_filter">
                                 <label>Search:<input
                                             type="search" class="form-control input-sm" placeholder=""
                                             aria-controls="datatable-buttons">
                                 </label>
-                            </div>
+                            </div>--}}
                                 <table class="table table-striped table-bordered" role="grid"
                                    aria-describedby="datatable-buttons_info">
                                 <thead>
@@ -107,8 +105,6 @@
                                         </td>
                                     </tr>
                                 @endforeach
-
-
 
                                 </tbody>
                             </table>

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Member extends Model
 {
@@ -65,4 +66,14 @@ class Member extends Model
         'sp_willing_to_serve',
         'comments'
     ];
+
+    public function hhUser()
+    {
+        return $this->hasOne('App\User', 'id', 'hh_user_id');
+    }
+
+    public function spUser()
+    {
+        return $this->hasOne('App\User', 'id', 'sp_user_id');
+    }
 }

@@ -304,7 +304,7 @@ class MemberController extends Controller
      */
     public function show($id)
     {
-        $member = Member::find($id);
+        $member = Member::with(['hhUser', 'spUser'])->find($id);
         return view('members.member', compact('member'));
     }
 
@@ -330,6 +330,46 @@ class MemberController extends Controller
     {
         //
     }
+
+    /**
+     * member Update By Admin the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function memberUpdateByAdmin(Request $request, $userID)
+    {
+        if (!empty($request->password) && !empty($request->password_confirmation)) {
+
+            $validator = Validator::make($request->all(), [
+                'password' => 'string|min:6|confirmed',
+                'password_confirmation' => 'same:password'
+            ]);
+
+            if ($validator->fails()) {
+                return back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
+            $data = [
+                'password' => bcrypt($request->password),
+                'role_id' => $request->role_id,
+            ];
+        } else {
+            $data = [
+                'role_id' => $request->role_id,
+            ];
+        }
+
+        if (User::where('id', $userID)->update($data)) {
+            return redirect()->back()->with('msg_success', 'Member has been update successfully.');
+        } else {
+            return redirect()->back()->with('msg_error', 'Failed to update status.');
+        }
+    }
+
 
     /**
      * Remove the specified resource from storage.

@@ -46,6 +46,7 @@ Route::get('member/registration', 'PublicController@membershipForm')->name('memb
 Route::post('member/register_member', 'PublicController@storeMember')->name('storeMember');
 Route::get('member/add', 'MemberController@membershipFormForAdmin')->name('membershipFormForAdmin');
 Route::get('member/member-delete/{id}', 'MemberController@memberDelete')->name('member-delete');
+Route::post('member/update-by-admin/{id}', 'MemberController@memberUpdateByAdmin')->name('memberUpdateByAdmin');
 Route::resource('/member', 'MemberController');
 
 

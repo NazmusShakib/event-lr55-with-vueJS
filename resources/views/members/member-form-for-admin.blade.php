@@ -51,7 +51,7 @@
                 <h3>Add Member</h3>
             </div>
 
-            <div class="title_right">
+            {{--<div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search for...">
@@ -60,7 +60,7 @@
                 </span>
                     </div>
                 </div>
-            </div>
+            </div>--}}
         </div>
 
         <div class="clearfix"></div>
@@ -73,15 +73,6 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-
-                        {{--<div class="alert alert-danger">
-                            <strong>Warning!</strong> The following information already exists in the system.
-                        </div>
-
-
-                        <div class="alert alert-success">
-                            <strong>Congrats!</strong> Your information has been submitted successfully.
-                        </div>--}}
 
 
                         <form action="#" method="POST">
