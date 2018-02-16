@@ -50,6 +50,19 @@ Route::post('member/update-by-admin/{id}', 'MemberController@memberUpdateByAdmin
 Route::resource('/member', 'MemberController');
 
 
+/**
+ * Profile Routes
+ *
+ */
+
+Route::get('profile', 'AuthController@authProfile')->name('authProfile');
+
+
+/**
+ * Test Routes
+ *
+ */
+
 Route::post('curl-test', function (\Illuminate\Http\Request $request) {
     /*\App\Task::create([
         'name' => $request->name,
