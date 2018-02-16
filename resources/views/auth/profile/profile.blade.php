@@ -143,6 +143,8 @@
 
                                         @{{title}}
 
+                                        <my-checkbox></my-checkbox>
+
 
                                     </div>
 
@@ -235,13 +237,26 @@
         </div>
     </div>
 
+    <script type="text/x-template" id="checkbox-template">
+        <div>
+            @{{var1}}
+        </div>
+    </script>
+
+
 @endsection
 
 @push('js')
-
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
 
+
 <script>
+    Vue.component('my-checkbox', {
+        name: 'checkbox-template',
+        template: '#checkbox-template',
+        props: ['khalahobe']
+    });
+
 
     var activity = new Vue({
         el: '#activity',
@@ -253,7 +268,6 @@
 
         }
     });
-
 </script>
 
 @endpush
