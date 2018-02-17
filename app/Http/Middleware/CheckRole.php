@@ -22,7 +22,7 @@ class CheckRole
         if ($request->user()->hasRole($roles) || !$roles) {
             return $next($request);
         }
-        return redirect('dashboard');//'errors.503');
+        return redirect('/');//'errors.503');
     }
 
 

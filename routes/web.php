@@ -1,15 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 Route::get('/', [
     'uses' => 'HomeController@homeDashboard',
     'as' => 'homeDashboard'
@@ -24,44 +14,85 @@ Route::get('get-events', [
     'uses' => 'EventsController@getEvents',
     'as' => 'get-events'
 ]);
+
 Route::post('add-event', [
     'uses' => 'EventsController@addEvent',
     'as' => 'add-event'
 ]);
 
-Route::get('vue-test/', function () {
-    return view('vue-test');
-});
-
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-/*Route::get('/welcome', function () {
-    return view('welcome');
-});*/
+//Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/task', 'TaskController');
-Route::get('member/registration', 'PublicController@membershipForm')->name('membershipForm');
-Route::post('member/register_member', 'PublicController@storeMember')->name('storeMember');
-Route::get('member/add', 'MemberController@membershipFormForAdmin')->name('membershipFormForAdmin');
-Route::get('member/member-delete/{id}', 'MemberController@memberDelete')->name('member-delete');
-Route::post('member/update-by-admin/{id}', 'MemberController@memberUpdateByAdmin')->name('memberUpdateByAdmin');
-Route::resource('/member', 'MemberController');
+/**
+ * Member Routing...
+ *
+ */
+
+Route::get('member/registration', [
+    'as' => 'membershipForm',
+    'uses' => 'PublicController@membershipForm',
+]);
+
+Route::post('member/register_member', [
+    'as' => 'storeMember',
+    'uses' => 'PublicController@storeMember',
+]);
+
+
+Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['Admin']],
+    function () {
+
+        Route::get('member/add', [
+            'as' => 'membershipFormForAdmin',
+            'uses' => 'MemberController@membershipFormForAdmin',
+            'middleware' => ['auth', 'roles'],
+            'roles' => ['Admin'],
+        ]);
+
+        Route::get('member/member-delete/{id}', [
+            'as' => 'memberDelete',
+            'uses' => 'MemberController@memberDelete',
+            'middleware' => ['auth', 'roles'],
+            'roles' => ['Admin'],
+        ]);
+
+        Route::post('member/update-by-admin/{id}', [
+            'as' => 'memberUpdateByAdmin',
+            'uses' => 'MemberController@memberUpdateByAdmin',
+            'middleware' => ['auth', 'roles'],
+            'roles' => ['Admin'],
+        ]);
+
+        Route::resource('/member', 'MemberController');
+
+    });
 
 
 /**
  * Profile Routes
  *
  */
+// Route::get('profile', 'AuthController@authProfile')->name('authProfile');
 
-Route::get('profile', 'AuthController@authProfile')->name('authProfile');
+Route::get('profile', [
+    'as' => 'authProfile',
+    'uses' => 'AuthController@authProfile',
+    'middleware' => ['auth'],
+]);
 
-
-/**
+/*************
+ *************
  * Test Routes
  *
  */
+
+Route::get('vue-test/', function () {
+    return view('vue-test');
+});
+
+Route::resource('/task', 'TaskController');
+
 
 Route::post('curl-test', function (\Illuminate\Http\Request $request) {
     /*\App\Task::create([
@@ -70,7 +101,7 @@ Route::post('curl-test', function (\Illuminate\Http\Request $request) {
         'description' => $request->description
      ]);*/
 
-    $newfile =  public_path().'/newfile2.txt';
+    $newfile = public_path() . '/newfile2.txt';
     $myfile = fopen($newfile, "w") or die("Unable to open file!");
     $txt = json_encode($request->all());
     fwrite($myfile, $txt);
@@ -108,7 +139,7 @@ Route::get('cl', function () {
 });
 
 Route::get('pp', function () {
-    $newfile =  public_path().'/newfile.txt';
+    $newfile = public_path() . '/newfile.txt';
     $myfile = fopen($newfile, "w") or die("Unable to open file!");
     $txt = "John Doe\n";
     fwrite($myfile, $txt);

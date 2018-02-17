@@ -8,6 +8,8 @@ class AuthController extends Controller
 {
     public function authProfile()
     {
+
+
         return view('auth.profile.profile');
     }
 }
