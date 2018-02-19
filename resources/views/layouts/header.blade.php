@@ -18,9 +18,9 @@
     <link href="{{ asset('assets/vendors/iCheck/skins/flat/green.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('assets/parsley/parsley.css')}}">
 
-    <link href="{{ asset('assets/vendorsMix/css/vendorsMix.css') }}" rel="stylesheet">
 
     @stack('styles')
+    <link href="{{ asset('assets/vendorsMix/css/vendorsMix.css') }}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="{{ asset('assets/build/css/custom.min.css') }}" rel="stylesheet">

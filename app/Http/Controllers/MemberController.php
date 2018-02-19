@@ -10,11 +10,6 @@ use Illuminate\Support\Facades\Validator;
 class MemberController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +20,7 @@ class MemberController extends Controller
         $members = Member::select(
             'id', 'sp_user_id', 'hh_user_id', 'sp_title', 'hh_title', 'sp_fname', 'hh_fname', 'sp_lname', 'hh_lname', 'sp_cell_phone',
             'hh_cell_phone', 'sp_email', 'hh_email'
-        )->paginate(10);
+        )->get();
         return view('members.member-list', compact('members'));
     }
 
