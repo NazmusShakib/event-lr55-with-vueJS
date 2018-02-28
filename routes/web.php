@@ -39,6 +39,11 @@ Route::post('member/register_member', [
     'uses' => 'PublicController@storeMember',
 ]);
 
+Route::post('member/storeMemberFromWPPluginCall', [
+    'as' => 'storeMemberFromWPPlugincall',
+    'uses' => 'PublicController@storeMemberFromWPPluginCall',
+]);
+
 
 Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['Admin']],
     function () {
@@ -101,7 +106,7 @@ Route::post('curl-test', function (\Illuminate\Http\Request $request) {
         'description' => $request->description
      ]);*/
 
-    $newfile = public_path() . '/newfile2.txt';
+    $newfile = public_path() . '/curlTest1.txt';
     $myfile = fopen($newfile, "w") or die("Unable to open file!");
     $txt = json_encode($request->all());
     fwrite($myfile, $txt);

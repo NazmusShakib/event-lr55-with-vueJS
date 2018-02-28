@@ -45,8 +45,8 @@ class CreateMembersTable extends Migration
             $table->string('hh_fax')->nullable();
             $table->string('sp_extra_phone',50)->nullable();
             $table->string('hh_extra_phone',50)->nullable();
-            $table->string('sp_marital_status',50)->nullable();
-            $table->string('hh_marital_status',50)->nullable();
+            $table->string('sp_marital_status',150)->nullable();
+            $table->string('hh_marital_status',150)->nullable();
             $table->date('sp_anniversary_date')->nullable();
             $table->date('hh_anniversary_date')->nullable();
             $table->string('sp_occupation')->nullable();

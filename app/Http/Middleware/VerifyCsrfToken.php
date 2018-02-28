@@ -13,6 +13,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         'add-event',
-        'curl-test'
+        'curl-test',
+        'member/storeMemberFromWPPluginCall',
     ];
 }
