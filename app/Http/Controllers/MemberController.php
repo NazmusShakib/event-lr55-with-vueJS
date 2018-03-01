@@ -289,7 +289,6 @@ class MemberController extends Controller
         } else {
             return redirect()->back()->with('msg_error', 'The following information already exists in the system.');
         }
-
     }
 
 
@@ -299,14 +298,60 @@ class MemberController extends Controller
         return Excel::create('Member-list', function($excel) use ($data) {
             $excel->sheet('All', function($sheet) use ($data)
             {
-                $sheet->cell('A1', function($cell) {$cell->setValue('HouseHolder title');   });
+                $sheet->cell('A1', function($cell) {$cell->setValue('HouseHolder Title');   });
                 $sheet->cell('B1', function($cell) {$cell->setValue('HouseHolder First Name');   });
                 $sheet->cell('C1', function($cell) {$cell->setValue('HouseHolder Middle Name');   });
                 $sheet->cell('D1', function($cell) {$cell->setValue('HouseHolder Last Name');   });
-                $sheet->cell('E1', function($cell) {$cell->setValue('Spouse title');   });
+                $sheet->cell('E1', function($cell) {$cell->setValue('Spouse Title');   });
                 $sheet->cell('F1', function($cell) {$cell->setValue('Spouse First Name');   });
                 $sheet->cell('G1', function($cell) {$cell->setValue('Spouse Middle Name');   });
                 $sheet->cell('H1', function($cell) {$cell->setValue('Spouse Last Name');   });
+                $sheet->cell('I1', function($cell) {$cell->setValue('HouseHolder Sex');   });
+                $sheet->cell('J1', function($cell) {$cell->setValue('Spouse Sex');   });
+                $sheet->cell('K1', function($cell) {$cell->setValue('HouseHolder DOB');   });
+                $sheet->cell('L1', function($cell) {$cell->setValue('Spouse DOB');   });
+                $sheet->cell('M1', function($cell) {$cell->setValue('HouseHolder address');   });
+                $sheet->cell('N1', function($cell) {$cell->setValue('Spouse address');   });
+                $sheet->cell('O1', function($cell) {$cell->setValue('HouseHolder alt address');   });
+                $sheet->cell('P1', function($cell) {$cell->setValue('Spouse alt address');   });
+                $sheet->cell('Q1', function($cell) {$cell->setValue('HouseHolder home phone');   });
+                $sheet->cell('R1', function($cell) {$cell->setValue('Spouse home phone');   });
+                $sheet->cell('S1', function($cell) {$cell->setValue('HouseHolder cell phone');   });
+                $sheet->cell('T1', function($cell) {$cell->setValue('Spouse cell phone');   });
+                $sheet->cell('U1', function($cell) {$cell->setValue('HouseHolder work phone');   });
+                $sheet->cell('V1', function($cell) {$cell->setValue('Spouse work phone');   });
+                $sheet->cell('W1', function($cell) {$cell->setValue('HouseHolder email');   });
+                $sheet->cell('X1', function($cell) {$cell->setValue('Spouse email');   });
+                $sheet->cell('Y1', function($cell) {$cell->setValue('HouseHolder fax');   });
+                $sheet->cell('Z1', function($cell) {$cell->setValue('Spouse fax');   });
+                $sheet->cell('AA1', function($cell) {$cell->setValue('HouseHolder extra phone');   });
+                $sheet->cell('AB1', function($cell) {$cell->setValue('Spouse extra phone');   });
+                $sheet->cell('AC1', function($cell) {$cell->setValue('HouseHolder marital status');   });
+                $sheet->cell('AD1', function($cell) {$cell->setValue('Spouse marital status');   });
+                $sheet->cell('AE1', function($cell) {$cell->setValue('HouseHolder anniversary date');   });
+                $sheet->cell('AF1', function($cell) {$cell->setValue('Spouse anniversary date');   });
+                $sheet->cell('AG1', function($cell) {$cell->setValue('HouseHolder occupation');   });
+                $sheet->cell('AH1', function($cell) {$cell->setValue('Spouse occupation');   });
+                $sheet->cell('AI1', function($cell) {$cell->setValue('HouseHolder employer');   });
+                $sheet->cell('AJ1', function($cell) {$cell->setValue('Spouse employer');   });
+                $sheet->cell('AK1', function($cell) {$cell->setValue('HouseHolder member status');   });
+                $sheet->cell('AL1', function($cell) {$cell->setValue('Spouse member status');   });
+                $sheet->cell('AM1', function($cell) {$cell->setValue('HouseHolder church background');   });
+                $sheet->cell('AN1', function($cell) {$cell->setValue('Spouse church background');   });
+                $sheet->cell('AO1', function($cell) {$cell->setValue('HouseHolder baptized');   });
+                $sheet->cell('AP1', function($cell) {$cell->setValue('Spouse baptized');   });
+                $sheet->cell('AQ1', function($cell) {$cell->setValue('HouseHolder skills');   });
+                $sheet->cell('AR1', function($cell) {$cell->setValue('Spouse skills');   });
+                $sheet->cell('AS1', function($cell) {$cell->setValue('Childrens');   });
+                $sheet->cell('AT1', function($cell) {$cell->setValue('HouseHolder previous positions');   });
+                $sheet->cell('AU1', function($cell) {$cell->setValue('Spouse previous positions');   });
+                $sheet->cell('AV1', function($cell) {$cell->setValue('HouseHolder activities');   });
+                $sheet->cell('AW1', function($cell) {$cell->setValue('Spouse activities');   });
+                $sheet->cell('AX1', function($cell) {$cell->setValue('HouseHolder spiritual gifts');   });
+                $sheet->cell('AY1', function($cell) {$cell->setValue('Spouse spiritual gifts');   });
+                $sheet->cell('AZ1', function($cell) {$cell->setValue('HouseHolder  willing to serve');   });
+                $sheet->cell('BA1', function($cell) {$cell->setValue('Spouse willing to serve');   });
+                $sheet->cell('BB1', function($cell) {$cell->setValue('Comments');   });
                 if (!empty($data)) {
                     foreach ($data as $key => $value) {
                         $i= $key+2;
@@ -321,14 +366,56 @@ class MemberController extends Controller
                         $sheet->cell('I'.$i, $value['hh_sex']);
                         $sheet->cell('J'.$i, $value['sp_sex']);
                         $sheet->cell('K'.$i, $value['hh_dob']);
-                        $sheet->cell('L.'.$i, $value['sp_dob']);
+                        $sheet->cell('L'.$i, $value['sp_dob']);
+                        $sheet->cell('M'.$i, $value['hh_address']);
+                        $sheet->cell('N'.$i, $value['sp_address']);
+                        $sheet->cell('O'.$i, $value['hh_alt_address']);
+                        $sheet->cell('P'.$i, $value['sp_alt_address']);
+                        $sheet->cell('Q'.$i, $value['hh_home_phone']);
+                        $sheet->cell('R'.$i, $value['sp_home_phone']);
+                        $sheet->cell('S'.$i, $value['hh_cell_phone']);
+                        $sheet->cell('T'.$i, $value['sp_cell_phone']);
+                        $sheet->cell('U'.$i, $value['hh_work_phone']);
+                        $sheet->cell('V'.$i, $value['sp_work_phone']);
+                        $sheet->cell('W'.$i, $value['hh_email']);
+                        $sheet->cell('X'.$i, $value['sp_email']);
+                        $sheet->cell('Y'.$i, $value['hh_fax']);
+                        $sheet->cell('Z'.$i, $value['sp_fax']);
+                        $sheet->cell('AA'.$i, $value['hh_extra_phone']);
+                        $sheet->cell('AB'.$i, $value['sp_extra_phone']);
+                        $sheet->cell('AC'.$i, $value['hh_marital_status']);
+                        $sheet->cell('AD'.$i, $value['sp_marital_status']);
+                        $sheet->cell('AE'.$i, $value['hh_anniversary_date']);
+                        $sheet->cell('AF'.$i, $value['sp_anniversary_date']);
+                        $sheet->cell('AG'.$i, $value['hh_occupation']);
+                        $sheet->cell('AH'.$i, $value['sp_occupation']);
+                        $sheet->cell('AI'.$i, $value['hh_employer']);
+                        $sheet->cell('AJ'.$i, $value['sp_employer']);
+                        $sheet->cell('AK'.$i, $value['hh_member_status']);
+                        $sheet->cell('AL'.$i, $value['sp_member_status']);
+                        $sheet->cell('AM'.$i, $value['hh_church_background']);
+                        $sheet->cell('AN'.$i, $value['sp_church_background']);
+                        $sheet->cell('AO'.$i, $value['hh_baptized']);
+                        $sheet->cell('AP'.$i, $value['sp_baptized']);
+                        $sheet->cell('AQ'.$i, $value['hh_skills']);
+                        $sheet->cell('AR'.$i, $value['sp_skills']);
+                        $sheet->cell('AS'.$i, $value['childrens']);
+                        $sheet->cell('AT'.$i, $value['hh_previous_positions']);
+                        $sheet->cell('AU'.$i, $value['sp_previous_positions']);
+                        $sheet->cell('AV'.$i, $value['hh_activities']);
+                        $sheet->cell('AW'.$i, $value['sp_activities']);
+                        $sheet->cell('AX'.$i, $value['hh_spiritual_gifts']);
+                        $sheet->cell('AY'.$i, $value['sp_spiritual_gifts']);
+                        $sheet->cell('AZ'.$i, $value['hh_willing_to_serve']);
+                        $sheet->cell('BA'.$i, $value['sp_willing_to_serve']);
+                        $sheet->cell('BB'.$i, $value['comments']);
                     }
                 }
             });
         })->download($type);
     }
-    
-    
+
+
 
     /**
      * Display the specified resource.
