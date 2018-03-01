@@ -61,9 +61,13 @@
                             <td>{{$member->hh_email}}</td>
                             <td>{{$member->sp_email}}</td>
                             <td>
-                                <a href="{{route('member.show', ['id' => $member->id])}}"><i class="fa fa-eye" title="View"></i></a>  |
+                                <a href="{{route('member.show', ['id' => $member->id])}}">
+                                    <i class="fa fa-eye" title="View"></i>
+                                </a>  |
                                 <i class="fa fa-edit" title="Edit"></i> |
-                                <a href="{{route('memberDelete', ['id' => $member->id])}}" onclick="return confirm('Are you sure?')"> <i class="fa fa-trash" title="Delete"></i></a>
+                                <a href="{{route('memberDelete', ['id' => $member->id])}}" onclick="return confirm('Are you sure?')">
+                                    <i class="fa fa-trash" title="Delete"></i>
+                                </a>
                             </td>
                         </tr>
                     @endforeach

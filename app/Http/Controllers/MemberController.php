@@ -397,17 +397,127 @@ class MemberController extends Controller
                         $sheet->cell('AN'.$i, $value['sp_church_background']);
                         $sheet->cell('AO'.$i, $value['hh_baptized']);
                         $sheet->cell('AP'.$i, $value['sp_baptized']);
-                        $sheet->cell('AQ'.$i, $value['hh_skills']);
-                        $sheet->cell('AR'.$i, $value['sp_skills']);
-                        $sheet->cell('AS'.$i, $value['childrens']);
-                        $sheet->cell('AT'.$i, $value['hh_previous_positions']);
-                        $sheet->cell('AU'.$i, $value['sp_previous_positions']);
-                        $sheet->cell('AV'.$i, $value['hh_activities']);
-                        $sheet->cell('AW'.$i, $value['sp_activities']);
-                        $sheet->cell('AX'.$i, $value['hh_spiritual_gifts']);
-                        $sheet->cell('AY'.$i, $value['sp_spiritual_gifts']);
-                        $sheet->cell('AZ'.$i, $value['hh_willing_to_serve']);
-                        $sheet->cell('BA'.$i, $value['sp_willing_to_serve']);
+
+                        $hh_skills = json_decode($value['hh_skills']);
+                        $result = '';
+                        foreach ($hh_skills as $key => $val) {
+                            if ($val) {
+                                $result .= $key.", ";
+                            }
+                        }
+                        $sheet->cell('AQ'.$i, $result);
+
+
+                        $sp_skills = json_decode($value['sp_skills']);
+                        $result = '';
+                        foreach ($sp_skills as $key => $val) {
+                            if ($val) {
+                                $result .= $key.", ";
+                            }
+                        }
+                        $sheet->cell('AR'.$i, $result);
+
+                        /*
+                         * Children Start
+                         *
+                         */
+                        $childs = json_decode($value['childrens']);
+                        $firstChild = "<b>Name: </b>" . $childs->child1->child1_name .
+                            "<br/><b>Date of birth: </b>" . $childs->child1->child1_dob .
+                            "<br/><b>Class: </b>" . $childs->child1->child1_class .
+                            "<br/><b>Grade: </b>" . $childs->child1->child1_grade .
+                            "<br/><b>Baptized: </b>" . $childs->child1->child1_baptized;
+
+                        $secondChild = "<b>Name: </b>" . $childs->child2->child2_name .
+                            "<br/><b>Date of birth: </b>" . $childs->child2->child2_dob .
+                            "<br/><b>Class: </b>" . $childs->child2->child2_class .
+                            "<br/><b>Grade: </b>" . $childs->child2->child2_grade .
+                            "<br/><b>Baptized: </b>" . $childs->child2->child2_baptized;
+
+                        $thirdChild = "<b>Name: </b>" . $childs->child3->child3_name .
+                            "<br/><b>Date of birth: </b>" . $childs->child3->child3_dob .
+                            "<br/><b>Class: </b>" . $childs->child3->child3_class .
+                            "<br/><b>Grade: </b>" . $childs->child3->child3_grade .
+                            "<br/><b>Baptized: </b>" . $childs->child3->child3_baptized;
+
+                        $sheet->cell('AS'.$i, $firstChild.'\n'.$secondChild.'\n'.$thirdChild);
+
+                        /*
+                         * Children Stop
+                         */
+
+
+                        $hh_previous_positions = json_decode($value['hh_previous_positions']);
+                        $result = '';
+                        foreach ($hh_previous_positions as $key => $val) {
+                            if ($val) {
+                                $result .= $key.", ";
+                            }
+                        }
+                        $sheet->cell('AT'.$i, $result);
+
+                        $sp_previous_positions = json_decode($value['sp_previous_positions']);
+                        $result = '';
+                        foreach ($sp_previous_positions as $key => $val) {
+                            if ($val) {
+                                $result .= $key.", ";
+                            }
+                        }
+                        $sheet->cell('AU'.$i, $result);
+
+                        $hh_activities = json_decode($value['hh_activities']);
+                        $result = '';
+                        foreach ($hh_activities as $key => $val) {
+                            if ($val) {
+                                $result .= $key.", ";
+                            }
+                        }
+                        $sheet->cell('AV'.$i, $result);
+
+                        $sp_activities = json_decode($value['sp_activities']);
+                        $result = '';
+                        foreach ($sp_activities as $key => $val) {
+                            if ($val) {
+                                $result .= $key.", ";
+                            }
+                        }
+                        $sheet->cell('AW'.$i, $result);
+
+                        $hh_spiritual_gifts = json_decode($value['hh_spiritual_gifts']);
+                        $result = '';
+                        foreach ($hh_spiritual_gifts as $key => $val) {
+                            if ($val) {
+                                $result .= $key.', ';
+                            }
+                        }
+                        $sheet->cell('AX'.$i, $result);
+
+                        $sp_spiritual_gifts = json_decode($value['sp_spiritual_gifts']);
+                        $result = '';
+                        foreach ($sp_spiritual_gifts as $key => $val) {
+                            if ($val) {
+                                $result .= $key.', ';
+                            }
+                        }
+                        $sheet->cell('AY'.$i, $result);
+
+                        $hh_willing_to_serve = json_decode($value['hh_willing_to_serve']);
+                        $result = '';
+                        foreach ($hh_willing_to_serve as $key => $val) {
+                            if ($val) {
+                                $result .= $key.', ';
+                            }
+                        }
+                        $sheet->cell('AZ'.$i, $result);
+
+                        $sp_willing_to_serve = json_decode($value['sp_willing_to_serve']);
+                        $result = '';
+                        foreach ($sp_willing_to_serve as $key => $val) {
+                            if ($val) {
+                                $result .= $key.', ';;
+                            }
+                        }
+                        $sheet->cell('BA'.$i, $result);
                         $sheet->cell('BB'.$i, $value['comments']);
                     }
                 }
