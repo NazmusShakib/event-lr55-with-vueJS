@@ -28,9 +28,11 @@
             <div class="x_content">
                 <div class="dt-buttons btn-group">
                     <a class="btn btn-default buttons-csv buttons-html5 btn-sm" tabindex="0"
-                       aria-controls="datatable-buttons" href="#"><span>CSV</span></a>
-                    <a class="btn btn-default buttons-print btn-sm" tabindex="0"
-                       aria-controls="datatable-buttons" href="#"><span>Print</span></a>
+                       aria-controls="datatable-buttons" href="{{route('exportMemberData', 'csv')}}"><span>CSV</span></a>
+                    <a class="btn btn-default buttons-csv buttons-html5 btn-sm" tabindex="0"
+                       aria-controls="datatable-buttons" href="{{route('exportMemberData', 'xlsx')}}"><span>XLSX</span></a>
+                    {{--<a class="btn btn-default buttons-print btn-sm" tabindex="0"
+                       aria-controls="datatable-buttons" href="#"><span>Print</span></a>--}}
                 </div>
 
                 <table id="datatable-responsive"

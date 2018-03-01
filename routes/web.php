@@ -51,25 +51,27 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['Admin']],
         Route::get('member/add', [
             'as' => 'membershipFormForAdmin',
             'uses' => 'MemberController@membershipFormForAdmin',
-            'middleware' => ['auth', 'roles'],
-            'roles' => ['Admin'],
         ]);
 
         Route::get('member/member-delete/{id}', [
             'as' => 'memberDelete',
             'uses' => 'MemberController@memberDelete',
-            'middleware' => ['auth', 'roles'],
-            'roles' => ['Admin'],
         ]);
 
         Route::post('member/update-by-admin/{id}', [
             'as' => 'memberUpdateByAdmin',
             'uses' => 'MemberController@memberUpdateByAdmin',
-            'middleware' => ['auth', 'roles'],
-            'roles' => ['Admin'],
         ]);
 
+        // Export User Table Data In Excel With Set Header
+        Route::get('member/export/{type}', [
+            'as' => 'exportMemberData',
+            'uses' => 'MemberController@exportMemberData',
+        ]);
+
+
         Route::resource('/member', 'MemberController');
+
 
     });
 

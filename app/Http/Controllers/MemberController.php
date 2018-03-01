@@ -6,6 +6,7 @@ use App\Member;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Excel;
 
 class MemberController extends Controller
 {
@@ -290,6 +291,44 @@ class MemberController extends Controller
         }
 
     }
+
+
+    public function exportMemberData($type)
+    {
+        $data = Member::get()->toArray();
+        return Excel::create('Member-list', function($excel) use ($data) {
+            $excel->sheet('All', function($sheet) use ($data)
+            {
+                $sheet->cell('A1', function($cell) {$cell->setValue('HouseHolder title');   });
+                $sheet->cell('B1', function($cell) {$cell->setValue('HouseHolder First Name');   });
+                $sheet->cell('C1', function($cell) {$cell->setValue('HouseHolder Middle Name');   });
+                $sheet->cell('D1', function($cell) {$cell->setValue('HouseHolder Last Name');   });
+                $sheet->cell('E1', function($cell) {$cell->setValue('Spouse title');   });
+                $sheet->cell('F1', function($cell) {$cell->setValue('Spouse First Name');   });
+                $sheet->cell('G1', function($cell) {$cell->setValue('Spouse Middle Name');   });
+                $sheet->cell('H1', function($cell) {$cell->setValue('Spouse Last Name');   });
+                if (!empty($data)) {
+                    foreach ($data as $key => $value) {
+                        $i= $key+2;
+                        $sheet->cell('A'.$i, $value['hh_title']);
+                        $sheet->cell('B'.$i, $value['hh_fname']);
+                        $sheet->cell('C'.$i, $value['hh_mname']);
+                        $sheet->cell('D'.$i, $value['hh_lname']);
+                        $sheet->cell('E'.$i, $value['sp_title']);
+                        $sheet->cell('F'.$i, $value['sp_fname']);
+                        $sheet->cell('G'.$i, $value['sp_mname']);
+                        $sheet->cell('H'.$i, $value['sp_lname']);
+                        $sheet->cell('I'.$i, $value['hh_sex']);
+                        $sheet->cell('J'.$i, $value['sp_sex']);
+                        $sheet->cell('K'.$i, $value['hh_dob']);
+                        $sheet->cell('L.'.$i, $value['sp_dob']);
+                    }
+                }
+            });
+        })->download($type);
+    }
+    
+    
 
     /**
      * Display the specified resource.
