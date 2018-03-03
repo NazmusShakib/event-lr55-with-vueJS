@@ -274,6 +274,7 @@ class PublicController extends Controller
             'name' => "$request->sp_fname $request->sp_lname",
             'email' => $request->sp_email,
             'phone' => $request->sp_cell_phone,
+            'sex' => $request->sp_sex,
             'role_id' => 3,
             'password' => bcrypt('secret')
         ]);
@@ -282,6 +283,7 @@ class PublicController extends Controller
             'name' => "$request->hh_fname $request->hh_lname",
             'email' => $request->hh_email,
             'phone' => $request->hh_cell_phone,
+            'sex' => $request->hh_sex,
             'role_id' => 3,
             'password' => bcrypt('secret')
         ]);

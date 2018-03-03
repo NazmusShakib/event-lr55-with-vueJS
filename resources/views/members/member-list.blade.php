@@ -19,13 +19,8 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2><a href="{{route('membershipFormForAdmin')}}" class="btn btn-primary"><i class="fa fa-user-plus"></i> Add Member</a>
-                    {{--<small>Users</small>--}}
-                </h2>
-
-                <div class="clearfix"></div>
-            </div>
-            <div class="x_content">
+                {{--<h2><a href="{{route('membershipFormForAdmin')}}" class="btn btn-primary"><i class="fa fa-user-plus"></i> Add Member</a>
+                </h2>--}}
                 <div class="dt-buttons btn-group">
                     <a class="btn btn-default buttons-csv buttons-html5 btn-sm" tabindex="0"
                        aria-controls="datatable-buttons" href="{{route('exportMemberData', 'csv')}}"><span>CSV</span></a>
@@ -34,6 +29,9 @@
                     {{--<a class="btn btn-default buttons-print btn-sm" tabindex="0"
                        aria-controls="datatable-buttons" href="#"><span>Print</span></a>--}}
                 </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
 
                 <table id="datatable-responsive"
                        class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"

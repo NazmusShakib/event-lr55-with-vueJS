@@ -5,27 +5,12 @@ Route::get('/', [
     'as' => 'homeDashboard'
 ]);
 
-Route::get('/events', [
-    'uses' => 'EventsController@index',
-    'as' => 'events'
-]);
-
-Route::get('get-events', [
-    'uses' => 'EventsController@getEvents',
-    'as' => 'get-events'
-]);
-
-Route::post('add-event', [
-    'uses' => 'EventsController@addEvent',
-    'as' => 'add-event'
-]);
-
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
 /**
- * Member Routing...
+ * PublicController Member Routing Start...
  *
  */
 
@@ -42,6 +27,32 @@ Route::post('member/register_member', [
 Route::post('member/storeMemberFromWPPluginCall', [
     'as' => 'storeMemberFromWPPlugincall',
     'uses' => 'PublicController@storeMemberFromWPPluginCall',
+]);
+
+/**
+ * PublicController Member Routing End...
+ *
+ */
+
+Route::get('/events', [
+    'uses' => 'EventsController@index',
+    'as' => 'events',
+    'middleware' => ['auth', 'roles'],
+    'roles' => ['Admin', 'Admin-JR']
+]);
+
+Route::get('get-events', [
+    'uses' => 'EventsController@getEvents',
+    'as' => 'get-events',
+    'middleware' => ['auth', 'roles'],
+    'roles' => ['Admin', 'Admin-JR']
+]);
+
+Route::post('add-event', [
+    'uses' => 'EventsController@addEvent',
+    'as' => 'add-event',
+    'middleware' => ['auth', 'roles'],
+    'roles' => ['Admin', 'Admin-JR']
 ]);
 
 
@@ -69,9 +80,7 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['Admin']],
             'uses' => 'MemberController@exportMemberData',
         ]);
 
-
         Route::resource('/member', 'MemberController');
-
 
     });
 

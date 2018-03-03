@@ -76,4 +76,9 @@ class Member extends Model
     {
         return $this->hasOne('App\User', 'id', 'sp_user_id');
     }
+
+   /* public function femaleCounter()
+    {
+        return $this->where('hh_sex', 'female')->where('sp_sex', 'female')->count();
+    }*/
 }

@@ -20,7 +20,7 @@ class EventsController extends Controller
 
     public function getEvents()
     {
-        $events = Event::all();
+        $events = Event::with('user')->get();
         return $events;
     }
 

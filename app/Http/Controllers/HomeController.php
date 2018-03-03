@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Member;
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -33,6 +35,11 @@ class HomeController extends Controller
      */
     public function homeDashboard()
     {
-        return view('home-dashboard');
+        $counter = [];
+        $counter['member'] = Member::count();
+        $counter['female'] = User::where('sex','female')->count();
+        $counter['male'] = User::where('sex','male')->count();
+
+        return view('home-dashboard', ['counter' => $counter]);
     }
 }
