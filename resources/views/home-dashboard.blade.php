@@ -11,7 +11,7 @@
     <!-- top tiles -->
     <div class="row tile_count">
         <div class="col-md-4 col-sm-4 col-xs-12 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> Total Member</span>
+            <span class="count_top"><i class="fa fa-user"></i> Total Members</span>
             <div class="count">{{$counter['member'] * 2 }}</div>
             {{--<span class="count_bottom"><i class="green">4% </i> From last Week</span>--}}
         </div>
