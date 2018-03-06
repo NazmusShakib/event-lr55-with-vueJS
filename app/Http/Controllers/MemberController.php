@@ -597,7 +597,7 @@ class MemberController extends Controller
         }
 
         if (User::where('id', $userID)->update($data)) {
-            return redirect()->back()->with('msg_success', 'Member has been update successfully.');
+            return redirect()->back()->with('msg_success', 'Member updated successfully.');
         } else {
             return redirect()->back()->with('msg_error', 'Failed to update status.');
         }
@@ -615,7 +615,7 @@ class MemberController extends Controller
         $member = Member::find($id);
 
         if ($member->delete()) {
-            return redirect()->back()->with('msg_success', 'Member has been deleted successfully.');
+            return redirect()->back()->with('msg_success', 'Member deleted successfully.');
         } else {
             return redirect()->back()->with('msg_error', 'Failed to delete.');
         }

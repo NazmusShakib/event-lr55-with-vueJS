@@ -8,11 +8,13 @@
                 </a>
             </li>
 
+            @if(Auth::user()->role_id == 1)
             <li>
                 <a href="{{route('member.index')}}">
                     <i class="fa fa-group"></i> Members
                 </a>
             </li>
+            @endif
 
             <li>
                 <a href="{{route('events')}}">

@@ -1,3 +1,5 @@
+@include('layouts.alert-message')
+
 <div class="col-md-6 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
@@ -57,7 +59,7 @@
                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="hhnewpwd">Password <span class="required">*</span></label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" name="password"
+                        <input type="password" name="password"
                                id="hhnewpwd"
                                class="form-control"
                                data-parsley-minlength="6"
@@ -75,7 +77,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="hhconfirmPwd">Confirm Password <span class="required">*</span></label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text"
+                        <input type="password"
                                name="password_confirmation"
                                id="hhconfirmPwd"
                                data-parsley-minlength="6"
@@ -100,7 +102,9 @@
     </div>
 </div>
 
-<div class="col-md-6 col-xs-12">
+
+@if(!empty($member->sp_user_id))
+    <div class="col-md-6 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
             <h2>Spouse</h2>
@@ -203,3 +207,4 @@
         </div>
     </div>
 </div>
+@endif

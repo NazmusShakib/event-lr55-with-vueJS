@@ -264,29 +264,35 @@ class PublicController extends Controller
     {
         /*$newfile = public_path() . '/newfile333.txt';
         $myfile = fopen($newfile, "w") or die("Unable to open file!");
-        $txt = $request->all();
+        $txt = json_encode($request->all());
         fwrite($myfile, $txt);
         fclose($myfile);
         return 1;*/
 
 
-        $spUser = User::create([
-            'name' => "$request->sp_fname $request->sp_lname",
-            'email' => $request->sp_email,
-            'phone' => $request->sp_cell_phone,
-            'sex' => $request->sp_sex,
-            'role_id' => 3,
-            'password' => bcrypt('secret')
-        ]);
-
-        $hhUser = User::create([
-            'name' => "$request->hh_fname $request->hh_lname",
-            'email' => $request->hh_email,
-            'phone' => $request->hh_cell_phone,
-            'sex' => $request->hh_sex,
-            'role_id' => 3,
-            'password' => bcrypt('secret')
-        ]);
+        if (!empty($request->sp_email) && !empty($request->sp_cell_phone)) {
+            $spUser = User::create([
+                'name' => "$request->sp_fname $request->sp_lname",
+                'email' => $request->sp_email,
+                'phone' => $request->sp_cell_phone,
+                'sex' => $request->sp_sex,
+                'role_id' => 3,
+                'password' => bcrypt('secret')
+            ]);
+            $spUserID = $spUser->id;
+        } else {
+            $spUserID = null;
+        }
+        if (!empty($request->hh_email) && !empty($request->hh_cell_phone)) {
+            $hhUser = User::create([
+                'name' => "$request->hh_fname $request->hh_lname",
+                'email' => $request->hh_email,
+                'phone' => $request->hh_cell_phone,
+                'sex' => $request->hh_sex,
+                'role_id' => 3,
+                'password' => bcrypt('secret')
+            ]);
+        }
 
         $childrens = [
             'child1' => [
@@ -432,7 +438,7 @@ class PublicController extends Controller
         ];
 
         $postData = [
-            'sp_user_id' => $spUser->id,
+            'sp_user_id' => $spUserID,
             'hh_user_id' => $hhUser->id,
             'sp_title' => $request->sp_title,
             'hh_title' => $request->hh_title,
