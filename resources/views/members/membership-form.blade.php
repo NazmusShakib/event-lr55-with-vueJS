@@ -56,7 +56,7 @@
                             </div>
                         @endif
 
-                        <form action="{{route('storeMemberFromWPPlugincall')}}" method="POST">
+                        <form action="{{route('storeMember')}}" method="POST">
                             {{csrf_field()}}
                             <fieldset>
                                 {{--<legend>Membership Information</legend>--}}

@@ -45936,7 +45936,7 @@ if (typeof jQuery === 'undefined') {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_Task_vue__ = __webpack_require__(33);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_bc3c2356_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Task_vue__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_38887068_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Task_vue__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(3);
 var disposed = false
 /* script */
@@ -45955,14 +45955,14 @@ var __vue_module_identifier__ = null
 
 var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_Task_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_bc3c2356_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Task_vue__["a" /* render */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_bc3c2356_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Task_vue__["b" /* staticRenderFns */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_38887068_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Task_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_38887068_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Task_vue__["b" /* staticRenderFns */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\task\\Task.vue"
+Component.options.__file = "resources/assets/js/components/task/Task.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -45971,9 +45971,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-bc3c2356", Component.options)
+    hotAPI.createRecord("data-v-38887068", Component.options)
   } else {
-    hotAPI.reload("data-v-bc3c2356", Component.options)
+    hotAPI.reload("data-v-38887068", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -46417,7 +46417,7 @@ render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-bc3c2356", { render: render, staticRenderFns: staticRenderFns })
+    require("vue-hot-reload-api")      .rerender("data-v-38887068", { render: render, staticRenderFns: staticRenderFns })
   }
 }
 
@@ -46428,7 +46428,7 @@ if (false) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_TaskCreate_vue__ = __webpack_require__(34);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_78ebe89e_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_TaskCreate_vue__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_1cdd7384_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_TaskCreate_vue__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(3);
 var disposed = false
 /* script */
@@ -46447,14 +46447,14 @@ var __vue_module_identifier__ = null
 
 var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_presets_env_modules_false_targets_browsers_2_uglify_true_plugins_transform_object_rest_spread_transform_runtime_polyfill_false_helpers_false_node_modules_vue_loader_lib_selector_type_script_index_0_TaskCreate_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_78ebe89e_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_TaskCreate_vue__["a" /* render */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_78ebe89e_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_TaskCreate_vue__["b" /* staticRenderFns */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_1cdd7384_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_TaskCreate_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_1cdd7384_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_TaskCreate_vue__["b" /* staticRenderFns */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\task\\TaskCreate.vue"
+Component.options.__file = "resources/assets/js/components/task/TaskCreate.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -46463,9 +46463,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-78ebe89e", Component.options)
+    hotAPI.createRecord("data-v-1cdd7384", Component.options)
   } else {
-    hotAPI.reload("data-v-78ebe89e", Component.options)
+    hotAPI.reload("data-v-1cdd7384", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -46599,7 +46599,7 @@ render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-78ebe89e", { render: render, staticRenderFns: staticRenderFns })
+    require("vue-hot-reload-api")      .rerender("data-v-1cdd7384", { render: render, staticRenderFns: staticRenderFns })
   }
 }
 

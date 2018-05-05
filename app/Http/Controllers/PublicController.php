@@ -21,34 +21,29 @@ class PublicController extends Controller
 
     public function storeMember(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'sp_email' => 'required|unique:members|max:155',
-            'hh_email' => 'required|unique:members|max:155',
-            'sp_cell_phone' => 'required|unique:members|max:155',
-            'hh_cell_phone' => 'required|unique:members|max:155',
-        ]);
-
-        if ($validator->fails()) {
-            return back()
-                ->withErrors($validator)
-                ->withInput();
+        if (!empty($request->sp_email) && !empty($request->sp_cell_phone)) {
+            $spUser = User::create([
+                'name' => "$request->sp_fname $request->sp_lname",
+                'email' => $request->sp_email,
+                'phone' => $request->sp_cell_phone,
+                'sex' => $request->sp_sex,
+                'role_id' => 3,
+                'password' => bcrypt('secret')
+            ]);
+            $spUserID = $spUser->id;
+        } else {
+            $spUserID = null;
         }
-
-        $spUser = User::create([
-            'name' => "$request->sp_fname $request->sp_lname",
-            'email' => $request->sp_email,
-            'phone' => $request->sp_cell_phone,
-            'role_id' => 3,
-            'password' => 'secret',
-        ]);
-
-        $hhUser = User::create([
-            'name' => "$request->hh_fname $request->hh_lname",
-            'email' => $request->hh_email,
-            'phone' => $request->hh_cell_phone,
-            'role_id' => 3,
-            'password' => 'secret',
-        ]);
+        if (!empty($request->hh_email) && !empty($request->hh_cell_phone)) {
+            $hhUser = User::create([
+                'name' => "$request->hh_fname $request->hh_lname",
+                'email' => $request->hh_email,
+                'phone' => $request->hh_cell_phone,
+                'sex' => $request->hh_sex,
+                'role_id' => 3,
+                'password' => bcrypt('secret')
+            ]);
+        }
 
         $childrens = [
             'child1' => [
@@ -194,7 +189,7 @@ class PublicController extends Controller
         ];
 
         $postData = [
-            'sp_user_id' => $spUser->id,
+            'sp_user_id' => $spUserID,
             'hh_user_id' => $hhUser->id,
             'sp_title' => $request->sp_title,
             'hh_title' => $request->hh_title,
