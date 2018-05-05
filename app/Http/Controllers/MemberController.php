@@ -615,6 +615,8 @@ class MemberController extends Controller
         $member = Member::find($id);
 
         if ($member->delete()) {
+            User::where('email', $member->hh_email)->delete();
+            User::where('email', $member->sp_email)->delete();
             return redirect()->back()->with('msg_success', 'Member deleted successfully.');
         } else {
             return redirect()->back()->with('msg_error', 'Failed to delete.');
