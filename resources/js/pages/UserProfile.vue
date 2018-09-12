@@ -19,7 +19,7 @@
 import {
   EditProfileForm,
   UserCard
-} from '@/pages'
+} from '../pages'
 
 export default{
   components: {

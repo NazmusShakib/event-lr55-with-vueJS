@@ -1,11 +1,26 @@
 import DashboardLayout from '../pages/Layout/DashboardLayout.vue'
 
+import Dashboard from '../pages/Dashboard.vue'
+import TableList from '../pages/TableList.vue'
+
 const routes = [
     {
         path: '/',
         component: DashboardLayout,
-        name: 'DashboardLayout'
+        redirect: '/dashboard',
+        children: [
+            {
+                path: 'dashboard',
+                name: 'Dashboard',
+                component: Dashboard
+            },
+            {
+                path: 'table',
+                name: 'Table List',
+                component: TableList
+            }
+        ]
     }
-];
+]
 
 export default routes
