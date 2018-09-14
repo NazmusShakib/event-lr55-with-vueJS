@@ -13,12 +13,20 @@ class User extends Authenticatable
     use Notifiable, HasApiTokens;
 
     /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'first_name', 'last_name', 'email', 'password',
+        'address', 'city', 'country', 'post_code', 'about_me'
     ];
 
     /**

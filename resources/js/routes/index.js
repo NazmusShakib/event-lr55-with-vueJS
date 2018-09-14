@@ -8,8 +8,11 @@ import Icons from '../pages/Icons.vue'
 import Maps from '../pages/Maps.vue'
 import Notifications from '../pages/Notifications.vue'
 import UpgradeToPRO from '../pages/UpgradeToPRO.vue'
+import Login from '../components/Auth/Login'
 
-const routes = [
+const index = [
+    { path: 'login', component: Login, name: 'Login' },
+    { path: '*', component: require('../components/Errors/404'), name: '404' },
     {
         path: '/',
         component: DashboardLayout,
@@ -63,4 +66,4 @@ const routes = [
     }
 ]
 
-export default routes
+export default index

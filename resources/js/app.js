@@ -13,7 +13,7 @@ import VueRouter from 'vue-router'
 import App from './App'
 
 // router setup
-import routes from './routes/routes'
+import routes from './routes'
 
 // Plugins
 import GlobalComponents from './global/globalComponents'
