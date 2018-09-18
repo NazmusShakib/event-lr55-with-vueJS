@@ -7,7 +7,7 @@
                 <div class="content">
                     <div class="container">
                         <div class="row text-center title-login-div">
-                            <router-link class="title-login" to="/login">Demo App</router-link>
+                            <router-link class="title-login" to="/login">Southern Staircase</router-link>
                         </div>
                         <div class="row">
                             <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
@@ -48,6 +48,8 @@
 
                 <app-footer></app-footer>
 
+                <div class="full-page-background"
+                     style="background-image: url(storage/static/img/background/background-21.jpg) "></div>
             </div>
         </div>
     </div>
@@ -55,7 +57,7 @@
 
 <script>
     // import axios from 'axios';
-    import Footer from '../Layout/Footer';
+    import Footer from '~/components/GeneralsComponents/Footer';
 
     export default {
         components: {
@@ -73,17 +75,41 @@
 
         methods: {
             login: function () {
-
+                axios.post(this.$env.GATEWAY_API + 'login', this.user)
+                    .then((response) => {
+                        Object.keys(response.data).forEach((key) => {
+                            this.$localStorage.set(key, response.data[key]);
+                            if (key === 'user') {
+                                let roles = response.data[key].roles;
+                                let userRoles = [];
+                                roles.forEach(function (role) {
+                                    userRoles.push(role.name);
+                                });
+                                this.$localStorage.set('roles', userRoles);
+                            }
+                        });
+                        this.redirectToHome();
+                    })
+                    .catch((error) => {
+                        this.$notification.notifyError(this, error.response.data);
+                    })
             },
 
             redirectToHome: function () {
-
+                if (this.$auth.hasRole('SysAdmin')) {
+                    this.$router.push('/quotes/list');
+                } else if (this.$auth.hasRole('Sales')) {
+                    this.$router.push('/quotes/list');
+                } else if (this.$auth.hasRole('SalesManager')) {
+                    this.$router.push('/quotes/list');
+                } else if (this.$auth.hasRole('SuperAdmin')) {
+                    this.$router.push('/quotes/list');
+                }
             }
-
         },
 
         mounted: function () {
-
+            this.$localStorage.clear();
         }
     }
 </script>
