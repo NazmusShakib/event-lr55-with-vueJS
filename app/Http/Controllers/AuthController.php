@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\User;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -18,13 +19,18 @@ class AuthController extends Controller
      */
     public function signup(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string',
+        $validator = Validator::make($request->all(),[
+            'fname' => 'required|string',
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string|confirmed'
         ]);
+
+        if($validator->fails()) {
+            return $validator->errors();
+        }
+
         $user = new User([
-            'name' => $request->name,
+            'name' => $request->fname,
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
@@ -68,9 +74,14 @@ class AuthController extends Controller
             $token->expires_at = Carbon::now()->addWeeks(1);
 
         $token->save();
+
+        $auth = Auth::user()->only([
+            'id', 'name', 'phone', 'email'
+        ]);
         
         return response()->json([
             'access_token' => $tokenResult->accessToken,
+            'auth' => $auth,
             'token_type' => 'Bearer',
             'expires_at' => Carbon::parse(
                 $tokenResult->token->expires_at

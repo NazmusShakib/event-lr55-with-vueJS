@@ -9,9 +9,11 @@ import Maps from '../pages/Maps.vue'
 import Notifications from '../pages/Notifications.vue'
 import UpgradeToPRO from '../pages/UpgradeToPRO.vue'
 import Login from '../components/Auth/Login'
+import Register from '../components/Auth/Register'
 
 const index = [
-    { path: 'login', component: Login, name: 'Login' },
+    { path: '/login', component: Login, name: 'Login' },
+    { path: '/register', component: Register, name: 'Register' },
     { path: '*', component: require('../components/Errors/404'), name: '404' },
     {
         path: '/',

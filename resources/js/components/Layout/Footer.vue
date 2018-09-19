@@ -1,8 +1,11 @@
 <template>
-    <footer class="footer">
+    <footer class="footer footer-transparent">
         <div class="container">
-            <div class="copyright text-center">
-                &copy {{ new Date().getFullYear() }} <a href="#" target="_blank">Creative Tim</a>, made with <i class="fa fa-heart heart"></i> for a better web
+            <div class="copyright">
+                &copy; Coded with
+                <i class="fa fa-heart heart"></i> by
+                <a href="https://github.com/cristijora" target="_blank">Cristi Jora</a>.
+                Designed by <a href="#" target="_blank">Creative Tim</a>.
             </div>
         </div>
     </footer>

@@ -10,8 +10,9 @@ const app = new Vue({
 
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+window.axios = require('axios');
 import App from './App'
-
+Vue.prototype.$baseURL = 'http://127.0.0.1:8000/api/';
 // router setup
 import routes from './routes'
 
@@ -36,6 +37,8 @@ Vue.use(MaterialDashboard)
 Vue.use(GlobalComponents)
 Vue.use(GlobalDirectives)
 Vue.use(Notifications)
+// Vue.use(VueNotify)
+
 
 // global library setup
 Object.defineProperty(Vue.prototype, '$Chartist', {
@@ -45,7 +48,7 @@ Object.defineProperty(Vue.prototype, '$Chartist', {
 })
 
 /* eslint-disable no-new */
-new Vue({
+const app = new Vue({
     el: '#app',
     render: h => h(App),
     router,
