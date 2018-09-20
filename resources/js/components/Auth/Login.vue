@@ -50,10 +50,12 @@
             login() {
                 axios.post(this.$baseURL + 'auth/login', this.user)
                     .then((response) => {
-                        var accessToken = JSON.stringify(response.data.access_token);
-                        localStorage.setItem('accessToken', accessToken);
+                        var token = response.data.access_token;
+                        localStorage.setItem('token', token);
+                        localStorage.setItem('auth', JSON.stringify(response.data.auth));
+
                         console.log('Login successfully');
-                        this.$router.push('/dashboard');
+                        this.$router.push('/user');
                     })
                     .catch((error) => {
                         console.log('Failed');

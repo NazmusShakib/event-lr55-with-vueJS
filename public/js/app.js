@@ -20470,7 +20470,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -20562,27 +20562,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'edit-profile-form',
-  props: {
-    dataBackgroundColor: {
-      type: String,
-      default: ''
+    name: 'edit-profile-form',
+    props: {
+        dataBackgroundColor: {
+            type: String,
+            default: ''
+        }
+    },
+    data: function data() {
+        return {
+            user: {
+                name: ''
+            }
+        };
+    },
+
+    methods: {
+        getAuthDetails: function getAuthDetails() {
+            var _this = this;
+
+            axios.get(this.$baseURL + 'user', {
+                headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
+            }).then(function (response) {
+                _this.user.name = response.data.name;
+                console.log(response.data.name);
+            }).catch(function (error) {});
+        }
+    },
+    mounted: function mounted() {
+        this.getAuthDetails();
+        console.log(localStorage.getItem('token'));
     }
-  },
-  data: function data() {
-    return {
-      username: null,
-      disabled: null,
-      emailadress: null,
-      lastname: null,
-      firstname: null,
-      address: null,
-      city: null,
-      country: null,
-      code: null,
-      aboutme: "Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
-    };
-  }
+
 });
 
 /***/ }),
@@ -20625,11 +20636,11 @@ var render = function() {
                       _c("md-input", {
                         attrs: { disabled: "" },
                         model: {
-                          value: _vm.disabled,
+                          value: _vm.user.disabled,
                           callback: function($$v) {
-                            _vm.disabled = $$v
+                            _vm.$set(_vm.user, "disabled", $$v)
                           },
-                          expression: "disabled"
+                          expression: "user.disabled"
                         }
                       })
                     ],
@@ -20651,11 +20662,11 @@ var render = function() {
                       _c("md-input", {
                         attrs: { type: "text" },
                         model: {
-                          value: _vm.username,
+                          value: _vm.user.name,
                           callback: function($$v) {
-                            _vm.username = $$v
+                            _vm.$set(_vm.user, "name", $$v)
                           },
-                          expression: "username"
+                          expression: "user.name"
                         }
                       })
                     ],
@@ -20677,11 +20688,11 @@ var render = function() {
                       _c("md-input", {
                         attrs: { type: "email" },
                         model: {
-                          value: _vm.emailadress,
+                          value: _vm.user.email,
                           callback: function($$v) {
-                            _vm.emailadress = $$v
+                            _vm.$set(_vm.user, "email", $$v)
                           },
-                          expression: "emailadress"
+                          expression: "user.email"
                         }
                       })
                     ],
@@ -20703,11 +20714,11 @@ var render = function() {
                       _c("md-input", {
                         attrs: { type: "text" },
                         model: {
-                          value: _vm.firstname,
+                          value: _vm.user.firstname,
                           callback: function($$v) {
-                            _vm.firstname = $$v
+                            _vm.$set(_vm.user, "firstname", $$v)
                           },
-                          expression: "firstname"
+                          expression: "user.firstname"
                         }
                       })
                     ],
@@ -20729,11 +20740,11 @@ var render = function() {
                       _c("md-input", {
                         attrs: { type: "text" },
                         model: {
-                          value: _vm.lastname,
+                          value: _vm.user.lastname,
                           callback: function($$v) {
-                            _vm.lastname = $$v
+                            _vm.$set(_vm.user, "lastname", $$v)
                           },
-                          expression: "lastname"
+                          expression: "user.lastname"
                         }
                       })
                     ],
@@ -20755,11 +20766,11 @@ var render = function() {
                       _c("md-input", {
                         attrs: { type: "text" },
                         model: {
-                          value: _vm.address,
+                          value: _vm.user.address,
                           callback: function($$v) {
-                            _vm.address = $$v
+                            _vm.$set(_vm.user, "address", $$v)
                           },
-                          expression: "address"
+                          expression: "user.address"
                         }
                       })
                     ],
@@ -20781,11 +20792,11 @@ var render = function() {
                       _c("md-input", {
                         attrs: { type: "text" },
                         model: {
-                          value: _vm.city,
+                          value: _vm.user.city,
                           callback: function($$v) {
-                            _vm.city = $$v
+                            _vm.$set(_vm.user, "city", $$v)
                           },
-                          expression: "city"
+                          expression: "user.city"
                         }
                       })
                     ],
@@ -20807,11 +20818,11 @@ var render = function() {
                       _c("md-input", {
                         attrs: { type: "text" },
                         model: {
-                          value: _vm.country,
+                          value: _vm.user.country,
                           callback: function($$v) {
-                            _vm.country = $$v
+                            _vm.$set(_vm.user, "country", $$v)
                           },
-                          expression: "country"
+                          expression: "user.country"
                         }
                       })
                     ],
@@ -20833,11 +20844,11 @@ var render = function() {
                       _c("md-input", {
                         attrs: { type: "number" },
                         model: {
-                          value: _vm.code,
+                          value: _vm.user.code,
                           callback: function($$v) {
-                            _vm.code = $$v
+                            _vm.$set(_vm.user, "code", $$v)
                           },
-                          expression: "code"
+                          expression: "user.code"
                         }
                       })
                     ],
@@ -20859,11 +20870,11 @@ var render = function() {
                       _vm._v(" "),
                       _c("md-textarea", {
                         model: {
-                          value: _vm.aboutme,
+                          value: _vm.user.aboutme,
                           callback: function($$v) {
-                            _vm.aboutme = $$v
+                            _vm.$set(_vm.user, "aboutme", $$v)
                           },
-                          expression: "aboutme"
+                          expression: "user.aboutme"
                         }
                       })
                     ],
@@ -23061,7 +23072,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -23127,10 +23138,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             axios.post(this.$baseURL + 'auth/login', this.user).then(function (response) {
-                var accessToken = JSON.stringify(response.data.access_token);
-                localStorage.setItem('accessToken', accessToken);
+                var token = response.data.access_token;
+                localStorage.setItem('token', token);
+                localStorage.setItem('auth', JSON.stringify(response.data.auth));
+
                 console.log('Login successfully');
-                _this.$router.push('/dashboard');
+                _this.$router.push('/user');
             }).catch(function (error) {
                 console.log('Failed');
                 _this.$router.push('/login');
