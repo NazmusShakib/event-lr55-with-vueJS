@@ -19,7 +19,13 @@ class User extends Authenticatable
      *
      * @var bool
      */
+    protected $primaryKey = 'id';
+
+    protected $keyType = 'string';
+
     public $incrementing = false;
+
+    public $timestamps = true;
 
     /**
      * The attributes that are mass assignable.
