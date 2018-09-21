@@ -89,7 +89,9 @@
         data() {
             return {
                 user: {
-                    name: ''
+                    name: '',
+                    email: '',
+                    address: '',
                 }
             }
         },
@@ -100,6 +102,7 @@
                 })
                     .then((response) => {
                         this.user.name = response.data.name;
+                        this.user.address = response.data.address;
                         console.log(response.data.name);
                     })
                     .catch((error) => {

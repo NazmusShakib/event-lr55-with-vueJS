@@ -29,12 +29,20 @@ class AuthController extends Controller
             return $validator->errors();
         }
 
-        $user = new User([
+        /*$user = new User([
             'name' => $request->fname,
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
-        $user->save();
+        $user->save();*/
+
+
+        User::create([
+            'name' => $request->fname,
+            'email' => $request->email,
+            'password' => bcrypt($request->password)
+        ]);
+
         return response()->json([
             'message' => 'Successfully created user!'
         ], 201);
@@ -63,12 +71,11 @@ class AuthController extends Controller
             return response()->json([
                 'message' => 'Unauthorized'
             ], 401);
-
         $user = $request->user();
-
         $tokenResult = $user->createToken('Personal Access Token');
 
         $token = $tokenResult->token;
+
 
         if ($request->remember_me)
             $token->expires_at = Carbon::now()->addWeeks(1);

@@ -2,15 +2,17 @@
 
 namespace App;
 
+use App\Traits\Uuids;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Laravel\Passport\HasApiTokens;  
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
     use Notifiable;
     use Notifiable, HasApiTokens;
+    use Uuids;
 
     /**
      * Indicates if the IDs are auto-incrementing.
@@ -25,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'first_name', 'last_name', 'email', 'password',
+        'name', 'first_name', 'last_name', 'phone', 'email', 'password',
         'address', 'city', 'country', 'post_code', 'about_me'
     ];
 
