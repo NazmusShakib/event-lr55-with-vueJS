@@ -12,7 +12,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 window.axios = require('axios');
 import App from './App'
-Vue.prototype.$baseURL = 'http://127.0.0.1:8000/api/';
+Vue.prototype.$baseURL = 'http://127.0.0.1:8001/api/';
 // router setup
 import routes from './routes'
 

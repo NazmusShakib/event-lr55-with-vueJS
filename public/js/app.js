@@ -12879,7 +12879,7 @@ const app = new Vue({
 
 window.axios = __webpack_require__(22);
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$baseURL = 'http://127.0.0.1:8000/api/';
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$baseURL = 'http://127.0.0.1:8001/api/';
 // router setup
 
 

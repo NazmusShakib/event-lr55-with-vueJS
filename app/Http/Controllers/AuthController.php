@@ -29,14 +29,6 @@ class AuthController extends Controller
             return $validator->errors();
         }
 
-        /*$user = new User([
-            'name' => $request->fname,
-            'email' => $request->email,
-            'password' => bcrypt($request->password)
-        ]);
-        $user->save();*/
-
-
         User::create([
             'name' => $request->fname,
             'email' => $request->email,
