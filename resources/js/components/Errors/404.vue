@@ -42,15 +42,15 @@
                 <nav class="pull-left">
                     <ul>
                         <li>
-                            <router-link :to="{ path: '/' }">Homee</router-link>
+                            <router-link :to="{ path: '/' }">Home</router-link>
                         </li>
                         <li>
-                            <router-link :to="{ path: '/login' }">Registerr</router-link>
+                            <router-link :to="{ path: '/login' }">Register</router-link>
                         </li>
                     </ul>
                 </nav>
                 <div class="copyright pull-right">
-                    &copy; 2017, made with
+                    &copy; {{ new Date().getFullYear() }}, made with
                     <i class="fa fa-heart heart"></i> by Paper admin
                 </div>
             </div>
