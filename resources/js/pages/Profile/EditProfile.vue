@@ -11,7 +11,7 @@
                     <div class="md-layout-item md-small-size-100 md-size-33">
                         <md-field>
                             <label>Company (disabled)</label>
-                            <md-input v-model="user.disabled" disabled></md-input>
+                            <md-input v-model="user.company" disabled></md-input>
                         </md-field>
                     </div>
                     <div class="md-layout-item md-small-size-100 md-size-33">
@@ -29,13 +29,13 @@
                     <div class="md-layout-item md-small-size-100 md-size-50">
                         <md-field>
                             <label>First Name</label>
-                            <md-input v-model="user.firstname" type="text"></md-input>
+                            <md-input v-model="user.first_name" type="text"></md-input>
                         </md-field>
                     </div>
                     <div class="md-layout-item md-small-size-100 md-size-50">
                         <md-field>
                             <label>Last Name</label>
-                            <md-input v-model="user.lastname" type="text"></md-input>
+                            <md-input v-model="user.last_name" type="text"></md-input>
                         </md-field>
                     </div>
                     <div class="md-layout-item md-small-size-100 md-size-100">
@@ -79,7 +79,7 @@
 </template>
 <script>
     export default {
-        name: 'edit-profile-form',
+        name: 'edit-profile',
         props: {
             dataBackgroundColor: {
                 type: String,
@@ -92,18 +92,20 @@
                     name: '',
                     email: '',
                     address: '',
+                    first_name: '',
+                    last_name: '',
+                    city: '',
+                    country: '',
                 }
             }
         },
         methods: {
             getAuthDetails() {
-                axios.get(this.$baseURL + 'user', {
-                        headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
+                axios.get(this.$baseURL + 'auth/profile', {
+                    headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
                 })
                     .then((response) => {
-                        this.user.name = response.data.name;
-                        this.user.address = response.data.address;
-                        console.log(response.data.name);
+                        this.user = response.data;
                     })
                     .catch((error) => {
 
@@ -113,9 +115,7 @@
         },
         mounted: function () {
             this.getAuthDetails();
-            console.log(localStorage.getItem('token'));
         }
-
     }
 
 </script>

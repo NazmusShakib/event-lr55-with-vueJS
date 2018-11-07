@@ -39,7 +39,7 @@
                             </drop-down>
                         </md-list-item>
 
-                        <md-list-item to="user" class="dropdown">
+                        <md-list-item to="profile" class="dropdown">
                             <drop-down>
                                 <a slot="title" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="material-icons">person</i>

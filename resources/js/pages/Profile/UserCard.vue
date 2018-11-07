@@ -6,7 +6,7 @@
 
     <md-card-content>
       <h6 class="category text-gray">CEO / Co-Founder</h6>
-      <h4 class="card-title">Alec Thompson</h4>
+      <h4 class="card-title">....</h4>
       <p class="card-description">
           Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
       </p>

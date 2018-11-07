@@ -26,7 +26,7 @@ const index = [
                 component: Dashboard
             },
             {
-                path: 'user',
+                path: 'profile',
                 name: 'User Profile',
                 component: UserProfile
             },
