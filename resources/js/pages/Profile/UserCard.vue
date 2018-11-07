@@ -5,11 +5,9 @@
     </div>
 
     <md-card-content>
-      <h6 class="category text-gray">CEO / Co-Founder</h6>
-      <h4 class="card-title">....</h4>
-      <p class="card-description">
-          Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-      </p>
+      <h6 class="category text-gray">{{ name }}</h6>
+      <h4 class="card-title">{{ email }}</h4>
+      <p class="card-description"> {{ aboutMe }} </p>
       <md-button class="md-round md-success">Follow</md-button>
     </md-card-content>
   </md-card>
@@ -21,7 +19,18 @@ export default {
     cardUserImage: {
       type: String,
       default: require('../../assets/img/faces/marc.jpg')
-    }
+    },
+      name: {
+        type: String,
+        required: true
+      },
+      email: {
+        type: String,
+        required: true
+      },
+      aboutMe: {
+        type: String,
+      },
   },
   data () {
     return {

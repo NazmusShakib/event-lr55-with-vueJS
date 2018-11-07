@@ -20184,10 +20184,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    EditProfile: __WEBPACK_IMPORTED_MODULE_0__Profile__["a" /* EditProfile */],
-    UserCard: __WEBPACK_IMPORTED_MODULE_0__Profile__["b" /* UserCard */]
-  }
+    components: {
+        EditProfile: __WEBPACK_IMPORTED_MODULE_0__Profile__["a" /* EditProfile */],
+        UserCard: __WEBPACK_IMPORTED_MODULE_0__Profile__["b" /* UserCard */]
+    },
+    data: function data() {
+        return {
+            profile: {
+                name: '',
+                email: '',
+                address: '',
+                first_name: '',
+                last_name: '',
+                city: '',
+                country: '',
+                about_me: ''
+            }
+        };
+    },
+
+    methods: {
+        getAuthDetails: function getAuthDetails() {
+            var _this = this;
+
+            axios.get(this.$baseURL + 'auth/profile', {
+                headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
+            }).then(function (response) {
+                _this.profile = response.data;
+            }).catch(function (error) {});
+        }
+    },
+    mounted: function mounted() {
+        this.getAuthDetails();
+    }
 });
 
 /***/ }),
@@ -20215,14 +20244,26 @@ var render = function() {
       _c(
         "div",
         { staticClass: "md-layout-item md-medium-size-100 md-size-66" },
-        [_c("edit-profile", { attrs: { "data-background-color": "green" } })],
+        [
+          _c("edit-profile", {
+            attrs: { "data-background-color": "green", profile: _vm.profile }
+          })
+        ],
         1
       ),
       _vm._v(" "),
       _c(
         "div",
         { staticClass: "md-layout-item md-medium-size-100 md-size-33" },
-        [_c("user-card")],
+        [
+          _c("user-card", {
+            attrs: {
+              name: _vm.profile.name,
+              email: _vm.profile.email,
+              aboutMe: _vm.profile.about_me
+            }
+          })
+        ],
         1
       )
     ])
@@ -61122,7 +61163,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -61147,8 +61188,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'user-card',
@@ -61156,6 +61195,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     cardUserImage: {
       type: String,
       default: __webpack_require__(103)
+    },
+    name: {
+      type: String,
+      required: true
+    },
+    email: {
+      type: String,
+      required: true
+    },
+    aboutMe: {
+      type: String
     }
   },
   data: function data() {
@@ -61183,15 +61233,13 @@ var render = function() {
         "md-card-content",
         [
           _c("h6", { staticClass: "category text-gray" }, [
-            _vm._v("CEO / Co-Founder")
+            _vm._v(_vm._s(_vm.name))
           ]),
           _vm._v(" "),
-          _c("h4", { staticClass: "card-title" }, [_vm._v("....")]),
+          _c("h4", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.email))]),
           _vm._v(" "),
           _c("p", { staticClass: "card-description" }, [
-            _vm._v(
-              "\n        Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...\n    "
-            )
+            _vm._v(" " + _vm._s(_vm.aboutMe) + " ")
           ]),
           _vm._v(" "),
           _c("md-button", { staticClass: "md-round md-success" }, [
@@ -61300,7 +61348,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -61397,36 +61445,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         dataBackgroundColor: {
             type: String,
             default: ''
+        },
+        profile: {
+            required: true
         }
     },
-    data: function data() {
-        return {
-            user: {
-                name: '',
-                email: '',
-                address: '',
-                first_name: '',
-                last_name: '',
-                city: '',
-                country: ''
-            }
-        };
-    },
-
-    methods: {
-        getAuthDetails: function getAuthDetails() {
-            var _this = this;
-
-            axios.get(this.$baseURL + 'auth/profile', {
-                headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
-            }).then(function (response) {
-                _this.user = response.data;
-            }).catch(function (error) {});
-        }
-    },
-    mounted: function mounted() {
-        this.getAuthDetails();
-    }
+    mounted: function mounted() {}
 });
 
 /***/ }),
@@ -61469,11 +61493,11 @@ var render = function() {
                       _c("md-input", {
                         attrs: { disabled: "" },
                         model: {
-                          value: _vm.user.company,
+                          value: _vm.profile.company,
                           callback: function($$v) {
-                            _vm.$set(_vm.user, "company", $$v)
+                            _vm.$set(_vm.profile, "company", $$v)
                           },
-                          expression: "user.company"
+                          expression: "profile.company"
                         }
                       })
                     ],
@@ -61495,11 +61519,11 @@ var render = function() {
                       _c("md-input", {
                         attrs: { type: "text" },
                         model: {
-                          value: _vm.user.name,
+                          value: _vm.profile.name,
                           callback: function($$v) {
-                            _vm.$set(_vm.user, "name", $$v)
+                            _vm.$set(_vm.profile, "name", $$v)
                           },
-                          expression: "user.name"
+                          expression: "profile.name"
                         }
                       })
                     ],
@@ -61521,11 +61545,11 @@ var render = function() {
                       _c("md-input", {
                         attrs: { type: "email" },
                         model: {
-                          value: _vm.user.email,
+                          value: _vm.profile.email,
                           callback: function($$v) {
-                            _vm.$set(_vm.user, "email", $$v)
+                            _vm.$set(_vm.profile, "email", $$v)
                           },
-                          expression: "user.email"
+                          expression: "profile.email"
                         }
                       })
                     ],
@@ -61547,11 +61571,11 @@ var render = function() {
                       _c("md-input", {
                         attrs: { type: "text" },
                         model: {
-                          value: _vm.user.first_name,
+                          value: _vm.profile.first_name,
                           callback: function($$v) {
-                            _vm.$set(_vm.user, "first_name", $$v)
+                            _vm.$set(_vm.profile, "first_name", $$v)
                           },
-                          expression: "user.first_name"
+                          expression: "profile.first_name"
                         }
                       })
                     ],
@@ -61573,11 +61597,11 @@ var render = function() {
                       _c("md-input", {
                         attrs: { type: "text" },
                         model: {
-                          value: _vm.user.last_name,
+                          value: _vm.profile.last_name,
                           callback: function($$v) {
-                            _vm.$set(_vm.user, "last_name", $$v)
+                            _vm.$set(_vm.profile, "last_name", $$v)
                           },
-                          expression: "user.last_name"
+                          expression: "profile.last_name"
                         }
                       })
                     ],
@@ -61599,11 +61623,11 @@ var render = function() {
                       _c("md-input", {
                         attrs: { type: "text" },
                         model: {
-                          value: _vm.user.address,
+                          value: _vm.profile.address,
                           callback: function($$v) {
-                            _vm.$set(_vm.user, "address", $$v)
+                            _vm.$set(_vm.profile, "address", $$v)
                           },
-                          expression: "user.address"
+                          expression: "profile.address"
                         }
                       })
                     ],
@@ -61625,11 +61649,11 @@ var render = function() {
                       _c("md-input", {
                         attrs: { type: "text" },
                         model: {
-                          value: _vm.user.city,
+                          value: _vm.profile.city,
                           callback: function($$v) {
-                            _vm.$set(_vm.user, "city", $$v)
+                            _vm.$set(_vm.profile, "city", $$v)
                           },
-                          expression: "user.city"
+                          expression: "profile.city"
                         }
                       })
                     ],
@@ -61651,11 +61675,11 @@ var render = function() {
                       _c("md-input", {
                         attrs: { type: "text" },
                         model: {
-                          value: _vm.user.country,
+                          value: _vm.profile.country,
                           callback: function($$v) {
-                            _vm.$set(_vm.user, "country", $$v)
+                            _vm.$set(_vm.profile, "country", $$v)
                           },
-                          expression: "user.country"
+                          expression: "profile.country"
                         }
                       })
                     ],
@@ -61677,11 +61701,11 @@ var render = function() {
                       _c("md-input", {
                         attrs: { type: "number" },
                         model: {
-                          value: _vm.user.code,
+                          value: _vm.profile.code,
                           callback: function($$v) {
-                            _vm.$set(_vm.user, "code", $$v)
+                            _vm.$set(_vm.profile, "code", $$v)
                           },
-                          expression: "user.code"
+                          expression: "profile.code"
                         }
                       })
                     ],
@@ -61703,11 +61727,11 @@ var render = function() {
                       _vm._v(" "),
                       _c("md-textarea", {
                         model: {
-                          value: _vm.user.aboutme,
+                          value: _vm.profile.aboutme,
                           callback: function($$v) {
-                            _vm.$set(_vm.user, "aboutme", $$v)
+                            _vm.$set(_vm.profile, "aboutme", $$v)
                           },
-                          expression: "user.aboutme"
+                          expression: "profile.aboutme"
                         }
                       })
                     ],
