@@ -10,7 +10,8 @@
         "laravel/framework": "5.7.*",
         "laravel/passport": "^7.0",
         "laravel/tinker": "^1.0",
-        "moontoast/math": "^1.1"
+        "moontoast/math": "^1.1",
+        "zizaco/entrust": "5.2.x"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

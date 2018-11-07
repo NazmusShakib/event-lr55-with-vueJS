@@ -29,6 +29,7 @@ class AuthController extends Controller
             return $validator->errors();
         }
 
+
         User::create([
             'name' => $request->fname,
             'email' => $request->email,
@@ -61,7 +62,7 @@ class AuthController extends Controller
 
         if(!Auth::attempt($credentials))
             return response()->json([
-                'message' => 'Unauthorized'
+                'message' => 'Invalid email and password combination.'
             ], 401);
         $user = $request->user();
         $tokenResult = $user->createToken('Personal Access Token');

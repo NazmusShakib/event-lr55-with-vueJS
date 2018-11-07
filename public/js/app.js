@@ -23075,7 +23075,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -23145,10 +23145,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 localStorage.setItem('token', token);
                 localStorage.setItem('auth', JSON.stringify(response.data.auth));
 
-                console.log('Login successfully');
-                _this.$router.push('/user');
+                console.log('Login successfully' + _this.user);
+                _this.$router.push('/dashboard');
             }).catch(function (error) {
-                console.log('Failed');
                 _this.$router.push('/login');
                 // console.log(this)
             });

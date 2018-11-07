@@ -42,9 +42,9 @@
             appFooter : Footer
         },
         data: function () {
-          return {
-              user: {}
-          }
+            return {
+                user: {}
+            }
         },
         methods: {
             login() {
@@ -54,11 +54,10 @@
                         localStorage.setItem('token', token);
                         localStorage.setItem('auth', JSON.stringify(response.data.auth));
 
-                        console.log('Login successfully');
-                        this.$router.push('/user');
+                        console.log('Login successfully' + this.user);
+                        this.$router.push('/dashboard');
                     })
                     .catch((error) => {
-                        console.log('Failed');
                         this.$router.push('/login')
                         // console.log(this)
                     });

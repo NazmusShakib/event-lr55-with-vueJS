@@ -7,25 +7,27 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Authenticatable
 {
     use Notifiable;
     use Notifiable, HasApiTokens;
-    use Uuids;
+    use EntrustUserTrait;
+    // use Uuids;
 
     /**
      * Indicates if the IDs are auto-incrementing.
      *
      * @var bool
      */
-    protected $primaryKey = 'id';
+    /*protected $primaryKey = 'id';
 
     protected $keyType = 'string';
 
     public $incrementing = false;
 
-    public $timestamps = true;
+    public $timestamps = true;*/
 
     /**
      * The attributes that are mass assignable.
