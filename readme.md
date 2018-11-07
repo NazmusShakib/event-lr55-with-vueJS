@@ -17,6 +17,8 @@
 - **composer install**
 - **php artisan migrate --seed**
 - **php artisan passport:install --force**
+- **npm install**
+- **npm run dev**
 - **php artisan serve --port=8001**
 
 ## Contributing
