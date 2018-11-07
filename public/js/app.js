@@ -17159,10 +17159,6 @@ var index = [{ path: '/login', component: __WEBPACK_IMPORTED_MODULE_9__component
         path: 'notifications',
         name: 'Notifications',
         component: __WEBPACK_IMPORTED_MODULE_7__pages_Notifications_vue___default.a
-    }, {
-        path: 'upgrade',
-        name: 'Upgrade to PRO',
-        component: __WEBPACK_IMPORTED_MODULE_8__pages_UpgradeToPRO_vue___default.a
     }]
 }];
 
@@ -17319,14 +17315,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -17428,7 +17416,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -17439,6 +17427,12 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -17613,7 +17607,7 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("span", { staticClass: "notification" }, [
-                                _vm._v("5")
+                                _vm._v("3")
                               ]),
                               _vm._v(" "),
                               _c("p", { staticClass: "hidden-lg hidden-md" }, [
@@ -17644,18 +17638,6 @@ var render = function() {
                                 _c("a", { attrs: { href: "#" } }, [
                                   _vm._v("You're now friend with Andrew")
                                 ])
-                              ]),
-                              _vm._v(" "),
-                              _c("li", [
-                                _c("a", { attrs: { href: "#" } }, [
-                                  _vm._v("Another Notification")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("li", [
-                                _c("a", { attrs: { href: "#" } }, [
-                                  _vm._v("Another One")
-                                ])
                               ])
                             ]
                           )
@@ -17664,15 +17646,55 @@ var render = function() {
                       1
                     ),
                     _vm._v(" "),
-                    _c("md-list-item", { attrs: { to: "/user" } }, [
-                      _c("i", { staticClass: "material-icons" }, [
-                        _vm._v("person")
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "hidden-lg hidden-md" }, [
-                        _vm._v("Profile")
-                      ])
-                    ])
+                    _c(
+                      "md-list-item",
+                      { staticClass: "dropdown", attrs: { to: "user" } },
+                      [
+                        _c("drop-down", [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "dropdown-toggle",
+                              attrs: {
+                                slot: "title",
+                                "data-toggle": "dropdown"
+                              },
+                              slot: "title"
+                            },
+                            [
+                              _c("i", { staticClass: "material-icons" }, [
+                                _vm._v("person")
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "hidden-lg hidden-md" }, [
+                                _vm._v("Profile")
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "ul",
+                            {
+                              staticClass: "dropdown-menu dropdown-menu-right"
+                            },
+                            [
+                              _c("li", [
+                                _c("a", { attrs: { href: "#" } }, [
+                                  _vm._v("Profile")
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("li", [
+                                _c("a", { attrs: { href: "#" } }, [
+                                  _vm._v("Logout")
+                                ])
+                              ])
+                            ]
+                          )
+                        ])
+                      ],
+                      1
+                    )
                   ],
                   1
                 )
@@ -17860,16 +17882,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "copyright text-center" }, [
         _vm._v("\n        © " + _vm._s(new Date().getFullYear()) + " "),
-        _c(
-          "a",
-          {
-            attrs: {
-              href: "https://www.creative-tim.com/?ref=mdf-vuejs",
-              target: "_blank"
-            }
-          },
-          [_vm._v("Creative Tim")]
-        ),
+        _c("a", { attrs: { href: "#" } }, [_vm._v("Creative Tim")]),
         _vm._v(", made with "),
         _c("i", { staticClass: "fa fa-heart heart" }),
         _vm._v(" for a better web\n      ")
@@ -18088,6 +18101,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -18151,7 +18170,7 @@ var render = function() {
                 _vm._v("notifications")
               ]),
               _vm._v(" "),
-              _c("span", { staticClass: "notification" }, [_vm._v("5")]),
+              _c("span", { staticClass: "notification" }, [_vm._v("3")]),
               _vm._v(" "),
               _c("p", [_vm._v("Notifications")])
             ]
@@ -18171,18 +18190,6 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("li", [
-              _c("a", { attrs: { href: "#" } }, [
-                _vm._v("You're now friend with Andrew")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { attrs: { href: "#" } }, [
-                _vm._v("Another Notification")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
               _c("a", { attrs: { href: "#" } }, [_vm._v("Another One")])
             ])
           ])
@@ -18191,7 +18198,33 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _vm._m(1)
+    _c(
+      "li",
+      [
+        _c("drop-down", [
+          _c(
+            "a",
+            {
+              staticClass: "dropdown-toggle",
+              attrs: { slot: "title", "data-toggle": "dropdown" },
+              slot: "title"
+            },
+            [
+              _c("i", { staticClass: "material-icons" }, [_vm._v("person")]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Profile")])
+            ]
+          ),
+          _vm._v(" "),
+          _c("ul", { staticClass: "dropdown-menu dropdown-menu-right" }, [
+            _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Profile")])]),
+            _vm._v(" "),
+            _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Logout")])])
+          ])
+        ])
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = [
@@ -18210,25 +18243,6 @@ var staticRenderFns = [
           _c("i", { staticClass: "material-icons" }, [_vm._v("dashboard")]),
           _vm._v(" "),
           _c("p", [_vm._v("Dashboard")])
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _c(
-        "a",
-        {
-          staticClass: "dropdown-toggle",
-          attrs: { href: "#", "data-toggle": "dropdown" }
-        },
-        [
-          _c("i", { staticClass: "material-icons" }, [_vm._v("person")]),
-          _vm._v(" "),
-          _c("p", [_vm._v("Profile")])
         ]
       )
     ])
@@ -18319,33 +18333,11 @@ var render = function() {
           _vm._v(" "),
           _c(
             "sidebar-link",
-            { attrs: { to: "/maps" } },
-            [
-              _c("md-icon", [_vm._v("location_on")]),
-              _vm._v(" "),
-              _c("p", [_vm._v("Maps")])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "sidebar-link",
             { attrs: { to: "/notifications" } },
             [
               _c("md-icon", [_vm._v("notifications")]),
               _vm._v(" "),
               _c("p", [_vm._v("Notifications")])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "sidebar-link",
-            { staticClass: "active-pro", attrs: { to: "/upgrade" } },
-            [
-              _c("md-icon", [_vm._v("unarchive")]),
-              _vm._v(" "),
-              _c("p", [_vm._v("Upgrade to PRO")])
             ],
             1
           )
@@ -25354,11 +25346,7 @@ var render = function() {
           "a",
           {
             staticClass: "simple-text logo-normal",
-            attrs: {
-              href:
-                "https://www.creative-tim.com/product/vue-material-dashboard",
-              target: "_blank"
-            }
+            attrs: { href: "#", target: "_blank" }
           },
           [_vm._v("\n      " + _vm._s(_vm.title) + "\n    ")]
         )
