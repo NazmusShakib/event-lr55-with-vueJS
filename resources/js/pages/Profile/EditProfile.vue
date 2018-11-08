@@ -1,12 +1,12 @@
 <template>
     <form>
-        <md-card>
-            <md-card-header :data-background-color="dataBackgroundColor">
+        <!-- <md-card> -->
+            <!-- <md-card-header :data-background-color="dataBackgroundColor">
                 <h4 class="title">Edit Profile</h4>
                 <p class="category">Complete your profile</p>
-            </md-card-header>
+            </md-card-header> -->
 
-            <md-card-content>
+            <!-- <md-card-content> -->
                 <div class="md-layout">
                     <div class="md-layout-item md-small-size-100 md-size-33">
                         <md-field>
@@ -73,8 +73,8 @@
                     </div>
                 </div>
 
-            </md-card-content>
-        </md-card>
+            <!-- </md-card-content> -->
+       <!--  </md-card> -->
     </form>
 </template>
 <script>
