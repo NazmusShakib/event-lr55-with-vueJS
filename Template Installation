@@ -1,0 +1,25 @@
+Template Installation
+
+# To remove all node dependencies
+ $ sudo apt-get remove --purge nodejs ^node-* nodejs-*
+
+# Install Update node package via curl
+ $ curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
+
+ $ sudo apt-get install -y nodejs
+ $ node -v && npm -v
+End of Local environment setup.
+
+Now vue paper them installation
+
+1. Extract the to a local directory.
+2. Jump in to them forlder via terminal then
+
+	$ npm install
+	$ npm run dev
+
+	$ npm i -f ## if you found any problem try this.
+	$ npm audit fix --force
+	$ npm rebuild node-sass
+
+End of the story 'I think that will make you shiny.' Goodluck!
