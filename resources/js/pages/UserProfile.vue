@@ -54,6 +54,7 @@
                     address: '',
                     first_name: '',
                     last_name: '',
+                    post_code: '',
                     city: '',
                     country: '',
                     about_me: '',
@@ -63,7 +64,7 @@
         methods: {
             getAuthDetails() {
                 axios.get(this.$baseURL + 'auth/profile', {
-                    headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
+                    headers: {'Authorization': 'Bearer ' + this.$localStorage.get('token')}
                 })
                     .then((response) => {
                         this.profile = response.data;

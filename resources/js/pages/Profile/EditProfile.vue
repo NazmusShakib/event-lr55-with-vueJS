@@ -59,17 +59,17 @@
                     <div class="md-layout-item md-small-size-100 md-size-33">
                         <md-field>
                             <label>Postal Code</label>
-                            <md-input v-model="profile.code" type="number"></md-input>
+                            <md-input v-model="profile.post_code" type="number"></md-input>
                         </md-field>
                     </div>
                     <div class="md-layout-item md-size-100">
                         <md-field maxlength="5">
                             <label>About Me</label>
-                            <md-textarea v-model="profile.aboutme"></md-textarea>
+                            <md-textarea v-model="profile.about_me"></md-textarea>
                         </md-field>
                     </div>
                     <div class="md-layout-item md-size-100 text-right">
-                        <md-button class="md-raised md-success">Update Profile</md-button>
+                        <md-button class="md-raised md-success" @click.prevent="updateProfile()">Update Profile</md-button>
                     </div>
                 </div>
 
@@ -89,8 +89,19 @@
                 required: true
             }
         },
-        mounted: function () {
-
+        methods: {
+            updateProfile() {
+                axios.put(this.$baseURL + 'auth/profile', this.profile, {
+                    headers: {'Authorization': 'Bearer ' + this.$localStorage.get('token')}
+                })
+                    .then((response) => {
+                        this.$notify({message: response.data, type: 'success', horizontalAlign: 'right', verticalAlign: 'top'});
+                        console.log(response.data);
+                    })
+                    .catch((error) => {
+                        console.log('Damn it!')
+                    });
+            }
         }
     }
 

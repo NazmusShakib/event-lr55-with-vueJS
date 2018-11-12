@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123456'),
 
         ]);
-        
+
         User::updateOrCreate([
             'email' => 'admin@example.com'
         ], [
@@ -34,27 +34,34 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'admin-name',
             'phone' => $faker->phoneNumber,
             'password' => bcrypt('123456'),
-
+            'address' => $faker->address,
+            'city' => $faker->city,
+            'country' => $faker->country,
+            'post_code' => $faker->postcode,
+            'about_me' => $faker->text,
+            'headshot' => '',
+            'designation' => 'Admin',
+            'company' => $faker->company
         ]);
 
         User::updateOrCreate([
-                'email' => 'support@example.com',
-            ], [
-                'name' => 'Support User',
-                'first_name' => 'Support',
-                'last_name' => 'User',
-                'phone' => $faker->phoneNumber,
-                'password' => bcrypt('123456'),
-            ]);
+            'email' => 'support@example.com',
+        ], [
+            'name' => 'Support User',
+            'first_name' => 'Support',
+            'last_name' => 'User',
+            'phone' => $faker->phoneNumber,
+            'password' => bcrypt('123456'),
+        ]);
 
         User::updateOrCreate([
-                'email' => 'customer@example.com',
-            ], [
-                'name' => 'Customer User',
-                'first_name' => 'Customer',
-                'last_name' => 'User',
-                'phone' => $faker->phoneNumber,
-                'password' => bcrypt('123456'),
-            ]);
+            'email' => 'customer@example.com',
+        ], [
+            'name' => 'Customer User',
+            'first_name' => 'Customer',
+            'last_name' => 'User',
+            'phone' => $faker->phoneNumber,
+            'password' => bcrypt('123456'),
+        ]);
     }
 }

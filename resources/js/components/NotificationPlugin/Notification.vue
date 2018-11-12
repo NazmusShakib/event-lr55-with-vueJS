@@ -23,7 +23,10 @@ export default {
   name: 'notification',
   props: {
     message: String,
-    icon: String,
+    icon: {
+        type: String,
+        default: 'add_alert'
+    },
     verticalAlign: {
       type: String,
       default: 'top'
@@ -108,8 +111,8 @@ export default {
   .alert {
     z-index: 100;
     cursor: pointer;
-    position: absolute;
-    width: 41%;
+    position: fixed;
+    width: 27%;
 
     &.center {
       left: 0;

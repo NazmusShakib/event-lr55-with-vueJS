@@ -13,3 +13,4 @@ yarn-error.log
 .env
 .phpunit.result.cache
 /vue-paper-dashboard-pro-v1.1.0
+/vue-material-dashboard-v1.0.1
