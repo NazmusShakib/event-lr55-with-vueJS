@@ -46,8 +46,8 @@
                                     <p class="hidden-lg hidden-md">Profile</p>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a href="javascript:void(0);">Profile</a></li>
-                                    <li><a href="javascript:void(0);">Logout</a></li>
+                                    <li><a href="javascript:void(0);" @click="logoutUser">Profile</a></li>
+                                    <li><a href="javascript:void(0);" @click.prevent="logoutUser">Logout</a></li>
                                 </ul>
                             </drop-down>
                         </md-list-item>
@@ -82,9 +82,8 @@
                 this.$sidebar.displaySidebar(!this.$sidebar.showSidebar)
             },
             logoutUser() {
-                // this.$localStorage.clear();
+                this.$localStorage.clear();
                 this.$router.push({ name: 'Login' });
-                console.log('logout called.');
             }
         }
     }

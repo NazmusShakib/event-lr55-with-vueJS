@@ -11,10 +11,11 @@ import UpgradeToPRO from '../pages/UpgradeToPRO.vue';
 import Login from '../components/Auth/Login';
 import Register from '../components/Auth/Register';
 
+
 const index = [
-    { path: '/login', component: Login, name: 'Login' },
-    { path: '/register', component: Register, name: 'Register' },
-    { path: '*', component: require('../components/Errors/404'), name: '404' },
+    { path: '/login', component: Login, name: 'Login', meta: {title: 'Login Page- Example App'} },
+    { path: '/register', component: Register, name: 'Register', meta: {title: 'Register Page- Example App'} },
+    { path: '*', component: require('../components/Errors/404'), name: '404', meta: {title: 'Not Found - Example App'} },
     {
         path: '/',
         component: DashboardLayout,
@@ -23,41 +24,79 @@ const index = [
             {
                 path: 'dashboard',
                 name: 'Dashboard',
-                component: Dashboard
+                component: Dashboard,
+                meta: {
+                    title: 'Dashboard - Example App',
+                    metaTags: [
+                        {
+                            name: 'description',
+                            content: 'The home page of our example app.'
+                        },
+                        {
+                            property: 'og:description',
+                            content: 'The home page of our example app.'
+                        }
+                    ]
+                }
             },
             {
                 path: 'profile',
                 name: 'User Profile',
-                component: UserProfile
+                component: UserProfile,
+                meta: {
+                    title: 'About Page - Example App',
+                    metaTags: [
+                        {
+                            name: 'description',
+                            content: 'The profile page of our example app.'
+                        },
+                        {
+                            property: 'og:description',
+                            content: 'The profile page of our example app.'
+                        }
+                    ]
+                },
             },
             {
                 path: 'table',
                 name: 'Table List',
-                component: TableList
+                component: TableList,
+                meta: {
+                    title: 'Table Page - Example App'
+                }
             },
             {
                 path: 'typography',
                 name: 'Typography',
-                component: Typography
+                component: Typography,
+                meta: {
+                    title: 'Typography Page - Example App'
+                }
             },
             {
                 path: 'icons',
                 name: 'Icons',
-                component: Icons
+                component: Icons,
+                meta: {
+                    title: 'Icons Page - Example App'
+                }
             },
             {
                 path: 'maps',
                 name: 'Maps',
+                component: Maps,
                 meta: {
-                    hideFooter: true
-                },
-                component: Maps
-
+                    hideFooter: true,
+                    title: 'Maps Page - Example App'
+                }
             },
             {
                 path: 'notifications',
                 name: 'Notifications',
-                component: Notifications
+                component: Notifications,
+                meta: {
+                    title: 'NotificationsPage - Example App'
+                }
             }
         ]
     }

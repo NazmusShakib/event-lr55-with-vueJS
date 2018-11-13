@@ -12867,6 +12867,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__global_material_dashboard__ = __webpack_require__(171);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_chartist__ = __webpack_require__(191);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_chartist___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_chartist__);
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 /*require('./bootstrap');
 window.Vue = require('vue');
 
@@ -12879,13 +12881,16 @@ const app = new Vue({
 
 
 
+
 window.axios = __webpack_require__(22);
+
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$baseURL = 'http://127.0.0.1:8001/api/';
 // router setup
 
 
 // Plugins
+
 
 
 
@@ -12901,9 +12906,11 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$localStorage = __WEBPACK_
 
 
 // configure router
+
+
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     mode: 'history',
-    routes: __WEBPACK_IMPORTED_MODULE_3__routes__["a" /* default */], // short for routes: routes
+    routes: [].concat(_toConsumableArray(__WEBPACK_IMPORTED_MODULE_3__routes__["a" /* default */])), // you may use only 'routes' short for routes: routes
     linkExactActiveClass: 'nav-item active'
 });
 
@@ -17133,42 +17140,74 @@ if (false) {
 
 
 
-var index = [{ path: '/login', component: __WEBPACK_IMPORTED_MODULE_9__components_Auth_Login___default.a, name: 'Login' }, { path: '/register', component: __WEBPACK_IMPORTED_MODULE_10__components_Auth_Register___default.a, name: 'Register' }, { path: '*', component: __webpack_require__(147), name: '404' }, {
+var index = [{ path: '/login', component: __WEBPACK_IMPORTED_MODULE_9__components_Auth_Login___default.a, name: 'Login', meta: { title: 'Login Page- Example App' } }, { path: '/register', component: __WEBPACK_IMPORTED_MODULE_10__components_Auth_Register___default.a, name: 'Register', meta: { title: 'Register Page- Example App' } }, { path: '*', component: __webpack_require__(147), name: '404', meta: { title: 'Not Found - Example App' } }, {
     path: '/',
     component: __WEBPACK_IMPORTED_MODULE_0__pages_Layout_DashboardLayout_vue___default.a,
     redirect: '/dashboard',
     children: [{
         path: 'dashboard',
         name: 'Dashboard',
-        component: __WEBPACK_IMPORTED_MODULE_1__pages_Dashboard_vue___default.a
+        component: __WEBPACK_IMPORTED_MODULE_1__pages_Dashboard_vue___default.a,
+        meta: {
+            title: 'Dashboard - Example App',
+            metaTags: [{
+                name: 'description',
+                content: 'The home page of our example app.'
+            }, {
+                property: 'og:description',
+                content: 'The home page of our example app.'
+            }]
+        }
     }, {
         path: 'profile',
         name: 'User Profile',
-        component: __WEBPACK_IMPORTED_MODULE_2__pages_UserProfile_vue___default.a
+        component: __WEBPACK_IMPORTED_MODULE_2__pages_UserProfile_vue___default.a,
+        meta: {
+            title: 'About Page - Example App',
+            metaTags: [{
+                name: 'description',
+                content: 'The profile page of our example app.'
+            }, {
+                property: 'og:description',
+                content: 'The profile page of our example app.'
+            }]
+        }
     }, {
         path: 'table',
         name: 'Table List',
-        component: __WEBPACK_IMPORTED_MODULE_3__pages_TableList_vue___default.a
+        component: __WEBPACK_IMPORTED_MODULE_3__pages_TableList_vue___default.a,
+        meta: {
+            title: 'Table Page - Example App'
+        }
     }, {
         path: 'typography',
         name: 'Typography',
-        component: __WEBPACK_IMPORTED_MODULE_4__pages_Typography_vue___default.a
+        component: __WEBPACK_IMPORTED_MODULE_4__pages_Typography_vue___default.a,
+        meta: {
+            title: 'Typography Page - Example App'
+        }
     }, {
         path: 'icons',
         name: 'Icons',
-        component: __WEBPACK_IMPORTED_MODULE_5__pages_Icons_vue___default.a
+        component: __WEBPACK_IMPORTED_MODULE_5__pages_Icons_vue___default.a,
+        meta: {
+            title: 'Icons Page - Example App'
+        }
     }, {
         path: 'maps',
         name: 'Maps',
+        component: __WEBPACK_IMPORTED_MODULE_6__pages_Maps_vue___default.a,
         meta: {
-            hideFooter: true
-        },
-        component: __WEBPACK_IMPORTED_MODULE_6__pages_Maps_vue___default.a
-
+            hideFooter: true,
+            title: 'Maps Page - Example App'
+        }
     }, {
         path: 'notifications',
         name: 'Notifications',
-        component: __WEBPACK_IMPORTED_MODULE_7__pages_Notifications_vue___default.a
+        component: __WEBPACK_IMPORTED_MODULE_7__pages_Notifications_vue___default.a,
+        meta: {
+            title: 'NotificationsPage - Example App'
+        }
     }]
 }];
 
@@ -17426,7 +17465,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -17513,9 +17552,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$sidebar.displaySidebar(!this.$sidebar.showSidebar);
         },
         logoutUser: function logoutUser() {
-            // this.$localStorage.clear();
+            this.$localStorage.clear();
             this.$router.push({ name: 'Login' });
-            console.log('logout called.');
         }
     }
 });
@@ -17697,7 +17735,10 @@ var render = function() {
                               _c("li", [
                                 _c(
                                   "a",
-                                  { attrs: { href: "javascript:void(0);" } },
+                                  {
+                                    attrs: { href: "javascript:void(0);" },
+                                    on: { click: _vm.logoutUser }
+                                  },
                                   [_vm._v("Profile")]
                                 )
                               ]),
@@ -17705,7 +17746,15 @@ var render = function() {
                               _c("li", [
                                 _c(
                                   "a",
-                                  { attrs: { href: "javascript:void(0);" } },
+                                  {
+                                    attrs: { href: "javascript:void(0);" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.logoutUser($event)
+                                      }
+                                    }
+                                  },
                                   [_vm._v("Logout")]
                                 )
                               ])
@@ -23209,7 +23258,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -23222,8 +23271,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Layout_Footer__ = __webpack_require__(136);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Layout_Footer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Layout_Footer__);
-//
-//
 //
 //
 //
