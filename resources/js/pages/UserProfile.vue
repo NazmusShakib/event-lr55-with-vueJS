@@ -14,21 +14,17 @@
                             </md-tab>
 
                             <md-tab id="tab-pages" md-label="Display Picture" md-icon="account_circle">
-                                2
+                                <head-shot :headshot="profile.headshot"/>
                             </md-tab>
 
                             <md-tab id="tab-posts" md-label="Change Password" md-icon="enhanced_encryption">
-                                3
+                                <change-password :profile="profile"/>
                             </md-tab>
                         </md-tabs>
                     </template>
                 </nav-tabs-card>
             </div>
 
-
-            <!-- <div class="md-layout-item md-medium-size-100 md-size-66">
-                <edit-profile data-background-color="green" :profile="profile"/>
-            </div> -->
             <div class="md-layout-item md-medium-size-100 md-size-33">
                 <user-card :name="profile.name" :email="profile.email" :aboutMe="profile.about_me"/>
             </div>
@@ -37,13 +33,15 @@
 </template>
 
 <script>
-    import {EditProfile, UserCard} from './Profile'
+    import {EditProfile, UserCard, HeadShot, ChangePassword} from './Profile'
     import {NavTabsCard} from '../components'
 
     export default {
         components: {
             EditProfile,
             UserCard,
+            HeadShot,
+            ChangePassword,
             NavTabsCard
         },
         data() {
@@ -54,6 +52,7 @@
                     address: '',
                     first_name: '',
                     last_name: '',
+                    headshot: '',
                     post_code: '',
                     city: '',
                     country: '',
