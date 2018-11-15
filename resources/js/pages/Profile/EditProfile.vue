@@ -96,7 +96,6 @@
                 })
                     .then((response) => {
                         this.$notify({message: response.data, type: 'success', horizontalAlign: 'right', verticalAlign: 'top'});
-                        console.log(response.data);
                     })
                     .catch((error) => {
                         console.log('Damn it!')

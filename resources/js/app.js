@@ -9,14 +9,13 @@ const app = new Vue({
 */
 
 import Vue from 'vue';
-import VueRouter from 'vue-router';
 
 window.axios = require('axios');
 import App from './App';
 
 Vue.prototype.$baseURL = 'http://127.0.0.1:8001/api/';
 // router setup
-import routes from './routes';
+import routers from './routes';
 
 // Plugins
 import GlobalComponents from './global/globalComponents';
@@ -35,18 +34,7 @@ import MaterialDashboard from './global/material-dashboard';
 
 import Chartist from 'chartist';
 
-// configure router
 
-
-const router = new VueRouter({
-    mode: 'history',
-    routes: [
-        ...routes
-    ], // you may use only 'routes' short for routes: routes
-    linkExactActiveClass: 'nav-item active'
-});
-
-Vue.use(VueRouter);
 Vue.use(MaterialDashboard);
 Vue.use(GlobalComponents);
 Vue.use(GlobalDirectives);
@@ -67,7 +55,7 @@ Object.defineProperty(Vue.prototype, '$Chartist', {
 const app = new Vue({
     el: '#app',
     render: h => h(App),
-    router,
+    router :routers,
     data: {
         Chartist: Chartist
     }
