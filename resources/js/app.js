@@ -11,6 +11,7 @@ const app = new Vue({
 import Vue from 'vue';
 
 window.axios = require('axios');
+window.NProgress = require('nprogress');
 import App from './App';
 
 Vue.prototype.$baseURL = 'http://127.0.0.1:8001/api/';
@@ -55,7 +56,7 @@ Object.defineProperty(Vue.prototype, '$Chartist', {
 const app = new Vue({
     el: '#app',
     render: h => h(App),
-    router :routers,
+    router : routers,
     data: {
         Chartist: Chartist
     }

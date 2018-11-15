@@ -16,10 +16,6 @@ const router = new VueRouter({
 export default router
 
 
-
-
-
-
 // This callback runs before every route change, including on page load.
 router.beforeEach((to, from, next) => {
     NProgress.start();
@@ -31,21 +27,27 @@ router.beforeEach((to, from, next) => {
             next({ path: '/login' });
             return false;
         } else {
-            let routeRoles = to.meta.roles;
-            let storageRoles = authService.roles();
-
-            if (routeRoles && storageRoles) {
-                if (routeRoles.some(routeRole => storageRoles.includes(routeRole))) {
-                    next();
-                } else {
-                    next({path: '/login'});
-                    return false;
-                }
-            } else {
-                next({path: '/login'});
-                return false;
-            }
+            next();
         }
     }
     next();
 });
+
+router.afterEach((to, from) => {
+    setTimeout(() => NProgress.done(), 500);
+});
+
+
+router.beforeResolve((to, from, next) => {
+    // If this isn't an initial page load.
+    if (to.name) {
+        // Start the route progress bar.
+        NProgress.start()
+    }
+    next()
+})
+
+router.afterEach((to, from) => {
+    // Complete the animation of the route progress bar.
+    NProgress.done()
+})
