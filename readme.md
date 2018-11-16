@@ -1,6 +1,6 @@
 <p align="center">
 	<img src="https://laravel.com/assets/img/components/logo-laravel.svg">
-	<img src="https://vuejs.org/images/logo.png" height="70px">
+	<img src="https://vuejs.org/images/logo.png" height="62px">
 </p>
 
 <p align="center">
@@ -20,6 +20,9 @@
 - **npm install**
 - **npm run dev**
 - **php artisan serve --port=8001**
+
+If you faced CSS loder of sass related problem you may try:
+- **$ npm rebuild node-sass**
 
 ## Contributing
 
