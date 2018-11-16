@@ -14952,11 +14952,14 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__menuRoutes__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_localStorage__ = __webpack_require__(181);
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
+
+
 
 
 
@@ -14972,9 +14975,54 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
 router.beforeEach(function (to, from, next) {
     NProgress.start();
     NProgress.set(0.1);
+
+    // This goes through the matched routes from last to first, finding the closest route with a title.
+    // eg. if we have /some/deep/nested/route and /some, /deep, and /nested have titles, nested's will be chosen.
+    var nearestWithTitle = to.matched.slice().reverse().find(function (r) {
+        return r.meta && r.meta.title;
+    });
+
+    // Find the nearest route element with meta tags.
+    var nearestWithMeta = to.matched.slice().reverse().find(function (r) {
+        return r.meta && r.meta.metaTags;
+    });
+    var previousNearestWithMeta = from.matched.slice().reverse().find(function (r) {
+        return r.meta && r.meta.metaTags;
+    });
+
+    // If a route with a title was found, set the document (page) title to that value.
+    if (nearestWithTitle) document.title = nearestWithTitle.meta.title;
+
+    // Remove any stale meta tags from the document using the key attribute we set below.
+    Array.from(document.querySelectorAll('[data-vue-router-controlled]')).map(function (el) {
+        return el.parentNode.removeChild(el);
+    });
+
+    if (nearestWithMeta) {
+        // Turn the meta tag definitions into actual elements in the head.
+        nearestWithMeta.meta.metaTags.map(function (tagDef) {
+            var tag = document.createElement('meta');
+
+            Object.keys(tagDef).forEach(function (key) {
+                tag.setAttribute(key, tagDef[key]);
+            });
+
+            // We use this to track which meta tags we create, so we don't interfere with other ones.
+            tag.setAttribute('data-vue-router-controlled', '');
+
+            return tag;
+        })
+        // Add the meta tags to the document head.
+        .forEach(function (tag) {
+            return document.head.appendChild(tag);
+        });
+    }
+
+    var token = __WEBPACK_IMPORTED_MODULE_3__services_localStorage__["a" /* default */].get('token');
+
     if (to.meta.requireAuth) {
-        var token = window.localStorage.getItem('token');
-        var user = JSON.parse(window.localStorage.getItem('user'));
+        // const token = localStorage.get('token');
+        var user = __WEBPACK_IMPORTED_MODULE_3__services_localStorage__["a" /* default */].get('user');
         if (!token) {
             next({ path: '/login' });
             return false;
@@ -14982,6 +15030,7 @@ router.beforeEach(function (to, from, next) {
             next();
         }
     }
+
     next();
 });
 
@@ -17675,7 +17724,16 @@ if (inBrowser && window.Vue) {
 
 
 
-var index = [{ path: '/login', component: __WEBPACK_IMPORTED_MODULE_9__components_Auth_Login___default.a, name: 'Login', meta: { title: 'Login Page- Example App' } }, { path: '/register', component: __WEBPACK_IMPORTED_MODULE_10__components_Auth_Register___default.a, name: 'Register', meta: { title: 'Register Page- Example App' } }, { path: '*', component: __webpack_require__(161), name: '404', meta: { title: 'Not Found - Example App' } }, {
+var index = [{
+    path: '/login',
+    component: __WEBPACK_IMPORTED_MODULE_9__components_Auth_Login___default.a,
+    name: 'Login',
+    meta: { title: 'Login Page- Example App', guest: true }
+}, {
+    path: '/register', component: __WEBPACK_IMPORTED_MODULE_10__components_Auth_Register___default.a,
+    name: 'Register',
+    meta: { title: 'Register Page- Example App', guest: true }
+}, { path: '*', component: __webpack_require__(161), name: '404', meta: { title: 'Not Found - Example App' } }, {
     path: '/',
     component: __WEBPACK_IMPORTED_MODULE_0__pages_Layout_DashboardLayout_vue___default.a,
     redirect: '/dashboard',
@@ -17684,6 +17742,7 @@ var index = [{ path: '/login', component: __WEBPACK_IMPORTED_MODULE_9__component
         name: 'Dashboard',
         component: __WEBPACK_IMPORTED_MODULE_1__pages_Dashboard_vue___default.a,
         meta: {
+            requireAuth: true,
             title: 'Dashboard - Example App',
             metaTags: [{
                 name: 'description',
@@ -17698,6 +17757,7 @@ var index = [{ path: '/login', component: __WEBPACK_IMPORTED_MODULE_9__component
         name: 'User Profile',
         component: __WEBPACK_IMPORTED_MODULE_2__pages_UserProfile_vue___default.a,
         meta: {
+            requireAuth: true,
             title: 'About Page - Example App',
             metaTags: [{
                 name: 'description',
@@ -17712,6 +17772,7 @@ var index = [{ path: '/login', component: __WEBPACK_IMPORTED_MODULE_9__component
         name: 'Table List',
         component: __WEBPACK_IMPORTED_MODULE_3__pages_TableList_vue___default.a,
         meta: {
+            requireAuth: true,
             title: 'Table Page - Example App'
         }
     }, {
@@ -17719,6 +17780,7 @@ var index = [{ path: '/login', component: __WEBPACK_IMPORTED_MODULE_9__component
         name: 'Typography',
         component: __WEBPACK_IMPORTED_MODULE_4__pages_Typography_vue___default.a,
         meta: {
+            requireAuth: true,
             title: 'Typography Page - Example App'
         }
     }, {
@@ -17726,6 +17788,7 @@ var index = [{ path: '/login', component: __WEBPACK_IMPORTED_MODULE_9__component
         name: 'Icons',
         component: __WEBPACK_IMPORTED_MODULE_5__pages_Icons_vue___default.a,
         meta: {
+            requireAuth: true,
             title: 'Icons Page - Example App'
         }
     }, {
@@ -17733,6 +17796,7 @@ var index = [{ path: '/login', component: __WEBPACK_IMPORTED_MODULE_9__component
         name: 'Maps',
         component: __WEBPACK_IMPORTED_MODULE_6__pages_Maps_vue___default.a,
         meta: {
+            requireAuth: true,
             hideFooter: true,
             title: 'Maps Page - Example App'
         }
@@ -17741,6 +17805,7 @@ var index = [{ path: '/login', component: __WEBPACK_IMPORTED_MODULE_9__component
         name: 'Notifications',
         component: __WEBPACK_IMPORTED_MODULE_7__pages_Notifications_vue___default.a,
         meta: {
+            requireAuth: true,
             title: 'NotificationsPage - Example App'
         }
     }]
@@ -20823,6 +20888,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).then(function (response) {
                 _this.profile = response.data;
             }).catch(function (error) {});
+        },
+        updateDP: function updateDP(picture) {
+            this.profile.headshot = picture;
+            console.log(this.profile.headshot);
         }
     },
     mounted: function mounted() {
@@ -21686,15 +21755,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'head-shot',
     props: {
         headshot: {
             type: String,
             default: __webpack_require__(116)
+        },
+        name: {
+            type: String,
+            default: 'Headshot'
         }
     },
     data: function data() {
-        return {};
+        return {
+            localHeadShot: this.headshot
+        };
     },
 
     methods: {
@@ -21709,12 +21783,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var reader = new FileReader();
             // let vm = this;
             reader.onload = function (e) {
-                _this.headshot = e.target.result;
+                _this.localHeadShot = e.target.result;
+                _this.$emit('updateHeadShot', _this.localHeadShot);
             };
             reader.readAsDataURL(file);
         },
         upload: function upload() {
-            axios.post('/api/upload', { headshot: this.headshot }).then(function (response) {});
+            axios.post('/api/upload', { headshot: this.localHeadShot }).then(function (response) {});
         }
     },
     mounted: function mounted() {}
@@ -21744,7 +21819,7 @@ var render = function() {
             "md-card",
             [
               _c("md-ripple", [
-                _c("img", { attrs: { src: _vm.headshot, alt: "Headsort" } })
+                _c("img", { attrs: { src: _vm.localHeadShot, alt: _vm.name } })
               ])
             ],
             1
@@ -30847,7 +30922,15 @@ var render = function() {
                         },
                         [
                           _c("head-shot", {
-                            attrs: { headshot: _vm.profile.headshot }
+                            attrs: {
+                              headshot: _vm.profile.headshot,
+                              name: _vm.profile.name
+                            },
+                            on: {
+                              updateHeadShot: function($event) {
+                                _vm.updateDP($event)
+                              }
+                            }
                           })
                         ],
                         1
@@ -33028,7 +33111,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -33093,7 +33176,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.post(this.$baseURL + 'auth/login', this.user).then(function (response) {
                 var token = response.data.access_token;
-                console.log(token);
                 localStorage.setItem('token', token);
                 localStorage.setItem('auth', JSON.stringify(response.data.auth));
 

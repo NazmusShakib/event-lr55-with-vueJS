@@ -13,9 +13,18 @@ import Register from '../components/Auth/Register';
 
 
 const index = [
-    { path: '/login', component: Login, name: 'Login', meta: {title: 'Login Page- Example App'} },
-    { path: '/register', component: Register, name: 'Register', meta: {title: 'Register Page- Example App'} },
-    { path: '*', component: require('../components/Errors/404'), name: '404', meta: {title: 'Not Found - Example App'} },
+    {
+        path: '/login',
+        component: Login,
+        name: 'Login',
+        meta: {title: 'Login Page- Example App', guest: true}
+    },
+    {
+        path: '/register', component: Register,
+        name: 'Register',
+        meta: {title: 'Register Page- Example App', guest: true}
+    },
+    {path: '*', component: require('../components/Errors/404'), name: '404', meta: {title: 'Not Found - Example App'}},
     {
         path: '/',
         component: DashboardLayout,
@@ -26,6 +35,7 @@ const index = [
                 name: 'Dashboard',
                 component: Dashboard,
                 meta: {
+                    requireAuth: true,
                     title: 'Dashboard - Example App',
                     metaTags: [
                         {
@@ -44,6 +54,7 @@ const index = [
                 name: 'User Profile',
                 component: UserProfile,
                 meta: {
+                    requireAuth: true,
                     title: 'About Page - Example App',
                     metaTags: [
                         {
@@ -62,6 +73,7 @@ const index = [
                 name: 'Table List',
                 component: TableList,
                 meta: {
+                    requireAuth: true,
                     title: 'Table Page - Example App'
                 }
             },
@@ -70,6 +82,7 @@ const index = [
                 name: 'Typography',
                 component: Typography,
                 meta: {
+                    requireAuth: true,
                     title: 'Typography Page - Example App'
                 }
             },
@@ -78,6 +91,7 @@ const index = [
                 name: 'Icons',
                 component: Icons,
                 meta: {
+                    requireAuth: true,
                     title: 'Icons Page - Example App'
                 }
             },
@@ -86,6 +100,7 @@ const index = [
                 name: 'Maps',
                 component: Maps,
                 meta: {
+                    requireAuth: true,
                     hideFooter: true,
                     title: 'Maps Page - Example App'
                 }
@@ -95,6 +110,7 @@ const index = [
                 name: 'Notifications',
                 component: Notifications,
                 meta: {
+                    requireAuth: true,
                     title: 'NotificationsPage - Example App'
                 }
             }

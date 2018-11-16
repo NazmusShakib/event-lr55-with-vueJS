@@ -14,7 +14,7 @@
                             </md-tab>
 
                             <md-tab id="tab-pages" md-label="Display Picture" md-icon="account_circle">
-                                <head-shot :headshot="profile.headshot"/>
+                                <head-shot :headshot="profile.headshot" :name="profile.name" v-on:updateHeadShot="updateDP($event)"/>
                             </md-tab>
 
                             <md-tab id="tab-posts" md-label="Change Password" md-icon="enhanced_encryption">
@@ -71,6 +71,10 @@
                     .catch((error) => {
 
                     });
+            },
+            updateDP(picture) {
+                this.profile.headshot = picture;
+                console.log(this.profile.headshot);
             }
 
         },

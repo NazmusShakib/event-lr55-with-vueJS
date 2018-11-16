@@ -6,7 +6,7 @@
             <div class="md-layout-item md-small-size-100 md-size-25">
                 <md-card>
                         <md-ripple>
-                            <img :src="headshot" alt="Headsort">
+                            <img :src="localHeadShot" :alt="name">
                         </md-ripple>
                 </md-card>
             </div>
@@ -33,15 +33,20 @@
 </style>
 <script>
     export default {
-        name: 'head-shot',
-        props:{
+        props : {
             headshot: {
                 type: String,
                 default: require('../../assets/img/faces/headshot.png')
+            },
+            name: {
+                type: String,
+                default: 'Headshot'
             }
         },
         data() {
-            return { }
+            return {
+                localHeadShot: this.headshot
+            }
         },
         methods: {
             onFileChange(e) {
@@ -54,12 +59,13 @@
                 let reader = new FileReader();
                 // let vm = this;
                 reader.onload = (e) => {
-                    this.headshot = e.target.result;
+                    this.localHeadShot = e.target.result;
+                    this.$emit('updateHeadShot', this.localHeadShot);
                 };
                 reader.readAsDataURL(file);
             },
             upload() {
-                axios.post('/api/upload', {headshot: this.headshot}).then(response => {
+                axios.post('/api/upload', {headshot: this.localHeadShot}).then(response => {
 
                 });
             }

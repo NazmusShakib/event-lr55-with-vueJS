@@ -49,7 +49,6 @@
                 axios.post(this.$baseURL + 'auth/login', this.user)
                     .then((response) => {
                         var token = response.data.access_token;
-                        console.log(token);
                         localStorage.setItem('token', token);
                         localStorage.setItem('auth', JSON.stringify(response.data.auth));
 
