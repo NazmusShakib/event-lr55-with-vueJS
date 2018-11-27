@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const { mix } = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,8 +11,33 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
+mix.js('resources/src/main.js', 'public/js')
     .styles([
         'resources/css/themify-icons.css'
     ], 'public/css/themify-icons.css')
-   .sass('resources/sass/app.scss', 'public/css');
+    .sass(
+        'resources/src/assets/sass/vendor.scss', 'public/css')
+    .copyDirectory('resources/src/assets/fonts', 'public/fonts');
+
+
+mix.webpackConfig({
+    plugins: [
+        // new BundleAnalyzerPlugin()
+    ],
+    resolve: {
+        extensions: ['.js', '.json', '.vue'],
+        alias: {
+            'src': path.join(__dirname, './resources/src')
+        }
+    },
+    module: {
+        rules: [{
+            test: /\.js?$/,
+            exclude: /(bower_components)/,
+            use: [{
+                loader: 'babel-loader',
+                options: mix.config.babel()
+            }]
+        }]
+    }
+});
